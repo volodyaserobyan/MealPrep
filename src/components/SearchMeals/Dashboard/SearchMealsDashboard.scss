@@ -1,0 +1,62 @@
+.SearchMealsDashboard {
+  background-color: #e5e5e5;
+
+  &-Cont {
+    padding-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    &-Filters {
+      flex: 0 0 288px;
+      > div {
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+        border-radius: 4px;
+        margin-bottom: 12px;
+
+        .Filters-Title {
+          padding: 16px 24px;
+          border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 16px;
+          color: #161616;
+        }
+
+        .Filters-Container {
+          padding: 16px 24px;
+        }
+      }
+
+      &-Heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e5e5e5 !important;
+
+        &-1 {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 24px;
+          color: #161616;
+        }
+
+        &-2 {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 13px;
+          line-height: 16px;
+          color: rgba(22, 22, 22, 0.48);
+        }
+      }
+    }
+
+    &-Wrapper {
+      width: 100%;
+    }
+  }
+}

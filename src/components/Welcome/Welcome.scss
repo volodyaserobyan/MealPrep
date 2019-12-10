@@ -1,0 +1,82 @@
+.Welcome {
+  width: 100%;
+  height: calc(100vh - 88px);
+  padding: 0 16px;
+  background-image: url("../../assets/images/Image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &-Content {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 60px;
+      line-height: 68px;
+      text-align: center;
+      color: #fff;
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+      color: #ffffff;
+      max-width: 500px;
+      width: 100%;
+      margin: 24px 0;
+    }
+
+    a {
+      text-decoration: none;
+      width: 168px;
+      background-color: #9aca3c;
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding: 18px 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 608px) {
+  .Welcome-Content {
+    h1 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Welcome-Content {
+    h1 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 11px;
+    }
+  }
+}

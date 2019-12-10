@@ -1,0 +1,82 @@
+.Plans-Orange {
+  background-color: #f58436;
+
+  &-Cont {
+    padding-top: 100px;
+    padding-bottom: 200px;
+    display: flex;
+    justify-content: space-between;
+
+    &_title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 48px;
+      color: #ffffff;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+    }
+
+    &_view {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 22px;
+      color: #ffffff;
+      margin-right: 13px;
+    }
+  }
+}
+
+.Plans-Usual {
+  background-color: #e5e5e5;
+
+  &-Cont {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -152px !important;
+
+    :first-child {
+      margin-left: 0;
+    }
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .Plans-Orange-Cont {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .Plans-Usual-Cont {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px !important;
+  }
+
+  .Plans-Orange-Cont_title {
+    font-size: 28px;
+  }
+
+  .Plans-Item {
+    display: flex;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 24px !important;
+    /* flex: 0 0 320px; */
+    margin: 0 12px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // background-color: #fff;
+    // border-radius: 4px;
+    // padding: 32px 24px 24px;
+  }
+}

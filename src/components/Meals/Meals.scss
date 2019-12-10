@@ -1,0 +1,75 @@
+.Meals {
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #e5e5e5;
+
+  &-Cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 32px;
+
+    &-Title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 48px;
+      text-align: center;
+      color: #161616;
+      margin-bottom: 50px;
+    }
+
+    &-All {
+      display: grid;
+      grid-template: 408px / repeat(4, 25%);
+    }
+
+    &_allbutton {
+      background: #9aca3c;
+      border-radius: 2px;
+      padding: 12px 18px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 0;
+      color: #ffffff;
+    }
+  }
+}
+
+.owl-nav {
+  margin: 0;
+  button {
+    outline: none;
+    position: absolute;
+    cursor: pointer;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 !important;
+  }
+}
+
+.owl-carousel .owl-prev {
+  background-image: url("../../assets/images/Arrow-left.svg") !important;
+  left: -40px;
+  span {
+    display: none;
+  }
+}
+.owl-carousel .owl-next {
+  background-image: url("../../assets/images/Arrow-right.svg") !important;
+  right: -40px;
+  span {
+    display: none;
+  }
+}

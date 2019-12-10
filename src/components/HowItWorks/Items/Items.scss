@@ -1,0 +1,38 @@
+.HowItWorks-Item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &_img {
+    width: 220px;
+    height: 220px;
+    background-image: url("../../../assets/images/Ellipse\ 1.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  &_title {
+    max-width: 344px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+    color: #161616;
+    margin-top: 38px;
+    margin-bottom: 16px;
+  }
+
+  &_context {
+    max-width: 344px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: rgba(22, 22, 22, 0.74);
+  }
+}

@@ -1,0 +1,100 @@
+// .MealsType-Checkbox {
+//   width: 18px;
+//   height: 18px;
+//   background: #ffffff !important;
+//   border: 1px solid rgba(22, 22, 22, 0.22);
+//   box-sizing: border-box;
+//   border-radius: 2px;
+// //   visibility:hidden;
+
+//   &:checked {
+//       background: #f35429;
+//   }
+// }
+
+.Filters-Container {
+  display: flex;
+  flex-direction: column;
+
+  > label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+    > p {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: rgba(22, 22, 22, 0.74);
+    }
+  }
+  :nth-last-child(1) {
+    margin-bottom: 0px;
+  }
+}
+
+
+.Checkbox {
+    position: absolute; // take it out of document flow
+    opacity: 0; // hide it
+  
+    & + p {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+    }
+  
+    // Box.
+    & + p:before {
+      content: '';
+      border: 1px solid rgba(22, 22, 22, 0.22);
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 20px;
+      height: 20px;
+      background: white;
+    }
+    
+    // Box focus
+    &:focus + p:before {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+    }
+  
+    // Box checked
+    &:checked + p:before {
+      background: #f35429;
+    }
+    
+    // Disabled state p.
+    &:disabled + p {
+      color: #b8b8b8;
+      cursor: auto;
+    }
+  
+    // Disabled box.
+    &:disabled + p:before {
+      box-shadow: none;
+      background: #ddd;
+    }
+  
+    // Checkmark. Could be replaced with an image
+    &:checked + p:after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 9px;
+      background: white;
+      width: 2px;
+      height: 2px;
+      box-shadow: 
+        2px 0 0 white,
+        4px 0 0 white,
+        4px -2px 0 white,
+        4px -4px 0 white,
+        4px -6px 0 white,
+        4px -8px 0 white;
+      transform: rotate(45deg);
+    }
+  }

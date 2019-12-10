@@ -1,0 +1,86 @@
+.Clients-Item {
+  background-color: #fff;
+  padding: 24px;
+  flex: 1;
+  margin: 0 12px;
+
+  &-Cont {
+    display: flex;
+    flex-direction: column;
+
+    &_context {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 22px;
+      padding-bottom: 36px;
+    }
+
+    &_user {
+      display: flex;
+      justify-content: space-between;
+
+      &_wrapper {
+        display: flex;
+
+        img {
+          padding-right: 16px;
+          max-width: 60px;
+          height: 44px;
+        }
+
+        &_info {
+          display: flex;
+          flex-direction: column;
+
+          &_name {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            color: #161616;
+          }
+
+          &_work {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 20px;
+            color: rgba(22, 22, 22, 0.48);
+          }
+        }
+      }
+
+      &_star {
+        display: flex;
+        align-items: center;
+        img {
+          width: 14px;
+          height: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 385px) {
+  .Clients-Item-Cont_user {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .Clients-Item-Cont_user_star {
+    img {
+      margin-top: 10px;
+      width: 13px !important;
+    }
+  }
+}
+
+// @media screen and (max-width: 568px) {
+
+//   .Clients-Item {
+//     max-width: 392px;
+//   }
+// }

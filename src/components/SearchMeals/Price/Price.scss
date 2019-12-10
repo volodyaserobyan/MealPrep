@@ -1,0 +1,38 @@
+.MuiSlider-rail {
+  height: 6px !important;
+  background: rgba(22, 22, 22, 0.1) !important;
+}
+
+.MuiSlider-track {
+  height: 6px !important;
+  background: rgba(22, 22, 22, 0.74) !important;
+}
+
+.MuiSlider-thumb {
+  height: 16px !important;
+  width: 16px !important;
+  background: #f58436 !important;
+}
+
+.Price-Prices {
+  width: 100%;
+  margin-top: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > p {
+    text-align: left;
+    width: 100%;
+    font-size: 14px;
+    background: #ffffff;
+    border: 1px solid rgba(22, 22, 22, 0.22);
+    box-sizing: border-box;
+    border-radius: 2px;
+    padding: 5px 16px;
+
+    &:last-child {
+      margin-left: 24px;
+    }
+  }
+}

@@ -1,0 +1,192 @@
+.Meals-Item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 12px;
+  margin-bottom: 16px;
+  min-height: 240px;
+  // max-width: 310px;
+
+  &_img {
+    min-height: 150px;
+    width: 100%;
+    // background-image: url("../../assets/images/Img\ \(1\).png");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    border-radius: 4px 4px 0px 0px;
+    position: relative;
+
+    &_favIcon {
+      position: absolute;
+      height: 32px;
+      width: 32px !important;
+      right: 12px;
+      top: 12px;
+    }
+  }
+
+  &-Cont {
+    width: 100%;
+    padding: 20px 16px;
+    background: #ffffff;
+    box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &_title {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 8px;
+
+      h1 {
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
+        color: #161616;
+        margin-right: 30px;
+      }
+
+      &_img {
+        width: 17px;
+        height: 17px;
+      }
+    }
+
+    &_context {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 20px;
+      color: rgba(22, 22, 22, 0.74);
+      -webkit-line-clamp: 3;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-align: start;
+      margin-bottom: 16px;
+    }
+
+    &_ingredients {
+      width: 100%;
+      display: flex;
+      padding-bottom: 16px;
+      justify-content: space-between;
+
+      &_wrapper {
+        display: flex;
+      }
+
+      &_count {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      &_cat {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        color: rgba(22, 22, 22, 0.48);
+      }
+
+      &_cal {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding-right: 21px;
+        border-right: 1px solid rgba(22, 22, 22, 0.48);
+      }
+
+      &_fat {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-right: 16px;
+        padding-left: 13px;
+      }
+
+      &_carbs {
+        display: flex;
+        align-items: flex-start;
+        margin-right: 16px;
+        flex-direction: column;
+      }
+
+      &_protein {
+        display: flex;
+        align-items: flex-start;
+        margin-right: 16px;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &-Order {
+    width: 100%;
+    border-top: 1px solid rgba(22, 22, 22, 0.1);
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 16px;
+    background-color: #ffffff;
+    padding-bottom: 13px;
+
+    &_price {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      color: #161616;
+    }
+
+    &_add {
+      padding-left: 16px;
+      border-left: 1px solid rgba(22, 22, 22, 0.1);
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      //   padding-left: 16px;
+      color: #f58436;
+    }
+  }
+}
+
+@media screen and (max-width: 916px) {
+  .Meals-Item-Cont_ingredients_count,
+  .Meals-Item-Cont_ingredients_cat {
+    font-size: 11px;
+  }
+
+  .Meals-Item-Cont_ingredients_fat {
+    margin-right: 10px;
+    padding-left: 16px;
+  }
+
+  .Meals-Item-Cont_ingredients_cal {
+    padding-right: 16px;
+  }
+
+  .Meals-Item-Cont_ingredients_carbs {
+    margin-right: 9px;
+  }
+  .Meals-Item {
+    max-width: 310px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Meals-Item {
+    margin: auto;
+  }
+}

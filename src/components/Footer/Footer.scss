@@ -1,0 +1,108 @@
+.Footer {
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 104px;
+  background-color: #161616;
+
+  &-Cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      flex: 1;
+    }
+
+    &-Logo {
+      margin-right: 150px;
+    }
+
+    &-Menu {
+      padding-right: 32px;
+      a {
+        text-decoration: none;
+        padding-bottom: 10px;
+        display: block;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+        color: #fff;
+      }
+    }
+
+    &-Terms {
+      margin-right: 150px;
+      padding-right: 32px;
+      a {
+        text-decoration: none;
+        padding-bottom: 10px;
+        display: block;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+        color: #fff;
+      }
+    }
+
+    &-Contacts {
+      display: flex;
+      flex-direction: column;
+      max-width: 330px;
+
+      p {
+        padding-bottom: 24px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+        color: #fff;
+      }
+
+      &_icons {
+        width: 104px;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Footer-Cont-Logo {
+    margin-right: 100px;
+  }
+  .Footer-Cont-Terms {
+    margin-right: 100px;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .Footer-Cont {
+    display: flex;
+    // justify-content: center;
+    // align-items: center;
+    flex-direction: column;
+
+    &-Menu {
+      min-width: 125px;
+      margin-bottom: 24px;
+    }
+
+    &-Logo {
+      min-width: 125px;
+      margin-right: 0px;
+      margin-bottom: 24px;
+    }
+
+    &-Terms {
+      margin-right: 0px;
+      padding-right: 0px;
+      margin-bottom: 24px;
+    }
+
+    &-Contacts {
+      max-width: 120px;
+    }
+  }
+}

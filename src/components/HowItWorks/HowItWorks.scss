@@ -1,0 +1,40 @@
+.HowItWorks {
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #FFF;
+
+  &-Cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &-Title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 48px;
+      text-align: center;
+      color: #161616;
+      margin-bottom: 50px;
+    }
+
+    &_items {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: 816px) {
+  .HowItWorks-Cont_items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .HowItWorks-Item_context {
+    padding-bottom: 16px;
+  }
+}
