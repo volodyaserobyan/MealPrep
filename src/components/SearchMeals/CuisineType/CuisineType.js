@@ -46,11 +46,6 @@ class CuisineType extends React.Component {
                 label: "mexican",
                 key: "checkBox6",
                 name: "Mexican"
-            },
-            {
-                label: "mexican",
-                key: "checkBox6",
-                name: "Mexican"
             }
         ];
     }

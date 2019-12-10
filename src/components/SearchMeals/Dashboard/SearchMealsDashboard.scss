@@ -57,7 +57,19 @@
     }
 
     &-Wrapper {
-      width: 100%;
+      padding-left: 16px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        width: 234px;
+        // margin-left: 16px;
+        // border: 1px solid red;
+        flex: 1 1 auto;
+      }
+      .Meals-Item {
+        margin: 24px 0px 0px 24px;
+      }
     }
   }
 }

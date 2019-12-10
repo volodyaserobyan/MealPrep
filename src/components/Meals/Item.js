@@ -45,7 +45,7 @@ class Item extends React.Component {
         return (
             <section className="Meals-Item item">
                 <div className="Meals-Item_img">
-                    <img src={img}/>
+                    <img className="Meals-Item_img_cover" src={img}/>
                     <img className="Meals-Item_img_favIcon" src={favIcon} />
                 </div>
                 <div className="Meals-Item-Cont">

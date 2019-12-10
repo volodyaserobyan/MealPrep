@@ -3,6 +3,7 @@ import MealType from '../MealType/MealType'
 import Price from '../Price/Price'
 import Chef from '../Chef/Chef'
 import CuisineType from '../CuisineType/CuisineType'
+import Item from '../../Meals/Item'
 import './SearchMealsDashboard.scss'
 
 class SearchMealsDashboard extends React.Component {
@@ -22,7 +23,7 @@ class SearchMealsDashboard extends React.Component {
                         <CuisineType />
                     </div>
                     <div className="SearchMealsDashboard-Cont-Wrapper">
-
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(id => <Item id={id} />)}
                     </div>
                 </div>
             </div>

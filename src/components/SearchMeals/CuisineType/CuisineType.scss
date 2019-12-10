@@ -1,6 +1,8 @@
 .SearchMealsDashboard-Cont-Filters-Cousine {
-  max-height: 284px;
-  overflow: auto;
+  .Filters-Container {
+    max-height: 236px;
+    overflow: auto;
+  }
 }
 ::-webkit-scrollbar {
   width: 8px;

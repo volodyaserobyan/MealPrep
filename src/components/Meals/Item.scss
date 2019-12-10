@@ -6,17 +6,19 @@
   padding: 0 12px;
   margin-bottom: 16px;
   min-height: 240px;
-  // max-width: 310px;
+  max-width: 310px;
 
   &_img {
-    min-height: 150px;
+    height: 180px;
     width: 100%;
-    // background-image: url("../../assets/images/Img\ \(1\).png");
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-position: center;
     border-radius: 4px 4px 0px 0px;
     position: relative;
+
+    &_cover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     &_favIcon {
       position: absolute;
