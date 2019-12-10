@@ -1,0 +1,24 @@
+.SearchMealsDashboard-Cont-Filters-Cousine {
+  max-height: 284px;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(22, 22, 22, 0.1);
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f58436;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #555;
+// }

@@ -1,8 +1,8 @@
 import React from 'react'
 import Checkbox from '../../Forms/CheckBox'
-import './Chef.scss'
+import './CuisineType.scss'
 
-class Chef extends React.Component {
+class CuisineType extends React.Component {
 
     constructor(props) {
         super(props)
@@ -13,39 +13,44 @@ class Chef extends React.Component {
 
         this.checkboxes = [
             {
-                label: "morris-cooper",
+                label: "american",
                 key: "checkBox1",
-                name: "Morris Cooper"
+                name: "American"
             },
             {
-                label: "diane-alexander",
+                label: "british",
                 key: "checkBox2",
-                name: "Diane Alexander"
+                name: "British"
             },
             {
-                label: "harold-hawkins",
+                label: "chinese",
                 key: "checkBox3",
-                name: "Harold Hawkins"
+                name: "Chinese"
             },
             {
-                label: "tomothy-mccoy",
+                label: "french",
                 key: "checkBox4",
-                name: "Tomothy Mccoy"
+                name: "French"
             },
             {
-                label: "annette-fisher",
+                label: "italian",
                 key: "checkBox5",
-                name: "Annette Fisher"
+                name: "Italian"
             },
             {
-                label: "brandie-lane",
+                label: "mexican",
                 key: "checkBox6",
-                name: "Brandie Lane"
+                name: "Mexican"
             },
             {
-                label: "brandie-lane",
+                label: "mexican",
                 key: "checkBox6",
-                name: "Brandie Lane"
+                name: "Mexican"
+            },
+            {
+                label: "mexican",
+                key: "checkBox6",
+                name: "Mexican"
             }
         ];
     }
@@ -59,7 +64,6 @@ class Chef extends React.Component {
     }
 
     render() {
-
         const checkBoxesToRender = this.checkboxes.map(item => {
             return (
                 <label key={item.key}>
@@ -74,8 +78,8 @@ class Chef extends React.Component {
         })
 
         return (
-            <div className="SearchMealsDashboard-Cont-Filters-Chef">
-                <h2 className="Filters-Title">Chef</h2>
+            <div className="SearchMealsDashboard-Cont-Filters-Cousine">
+                <h2 className="Filters-Title">Cuisine Type</h2>
                 <div className="Filters-Container">
                     {checkBoxesToRender}
                 </div>
@@ -84,4 +88,4 @@ class Chef extends React.Component {
     }
 }
 
-export default Chef
+export default CuisineType

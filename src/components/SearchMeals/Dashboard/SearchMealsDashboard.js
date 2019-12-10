@@ -2,6 +2,7 @@ import React from 'react'
 import MealType from '../MealType/MealType'
 import Price from '../Price/Price'
 import Chef from '../Chef/Chef'
+import CuisineType from '../CuisineType/CuisineType'
 import './SearchMealsDashboard.scss'
 
 class SearchMealsDashboard extends React.Component {
@@ -18,12 +19,7 @@ class SearchMealsDashboard extends React.Component {
                         <MealType />
                         <Price />
                         <Chef />
-                        <div className="SearchMealsDashboard-Cont-Filters-Cousine">
-                            <h2 className="Filters-Title">Cuisine Type</h2>
-                            <div className="Filters-Container">
-
-                            </div>
-                        </div>
+                        <CuisineType />
                     </div>
                     <div className="SearchMealsDashboard-Cont-Wrapper">
 
