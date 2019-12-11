@@ -18,6 +18,7 @@ class SearchMealsDashboard extends React.Component {
             mealType: [],
             cuisineType: [],
             chef: [],
+            price: [],
             currentDelete: ""
         }
     }
@@ -36,6 +37,7 @@ class SearchMealsDashboard extends React.Component {
         let mealsType = <></>
         let cuisineType = <></>
         let chef = <></>
+        let price = <> </>
 
         if (!_.isEmpty(this.state.mealType)) {
             mealsType = <div className="Filter-Result">
@@ -59,6 +61,12 @@ class SearchMealsDashboard extends React.Component {
                 <p className="Filter-Result_value">{this.state.chef.map(item => (
                     <span key={item}>{item} <img onClick={() => this.clearFilterMeal(item)} src={deleteIcon} /> </span>
                 ))}</p>
+            </div>
+        }
+        if (!_.isEmpty(this.state.price)) {
+            price = <div className="Filter-Result">
+                <p className="Filter-Result_content">Price:</p>
+                <p className="Filter-Result_value">${this.state.price[0]}-${this.state.price[1]}</p>
             </div>
         }
 
@@ -92,6 +100,7 @@ class SearchMealsDashboard extends React.Component {
                             {mealsType}
                             {cuisineType}
                             {chef}
+                            {price}
                         </div>
                         <div className="SearchMealsDashboard-Cont-Wrapper">
                             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(id => <Item key={id} id={id} />)}
