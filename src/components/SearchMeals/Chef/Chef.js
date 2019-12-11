@@ -1,6 +1,7 @@
 import React from 'react'
 import Checkbox from '../../Forms/CheckBox'
 import './Chef.scss'
+let _ = require('lodash')
 
 class Chef extends React.Component {
 
@@ -8,7 +9,8 @@ class Chef extends React.Component {
         super(props)
 
         this.state = {
-            checkedItemsMealType: new Map()
+            checkedItemsMealType: new Map(),
+            checkedItemsArr: []
         };
 
         this.checkboxes = [
@@ -44,18 +46,56 @@ class Chef extends React.Component {
             },
             {
                 label: "brandie-lane",
-                key: "checkBox6",
+                key: "checkBox7",
                 name: "Brandie Lane"
             }
         ];
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEqual(this.props, nextProps)) {
+            this.setState( prevState => ({
+                checkedItemsArr: this.removeItemfromArr(nextProps.currentDelete, this.state.checkedItemsArr),
+                checkedItemsMealType: prevState.checkedItemsMealType.set(nextProps.currentDelete, false)
+            }))
+            setTimeout(() => {
+                this.props.toggleChange({
+                    chef: this.state.checkedItemsArr
+                })
+            }, 0);
+        }
+    }
+
+    removeItemfromArr = (item, arr) => {
+        let newArr = [...arr]
+        let index = newArr.indexOf(item)
+        if (index !== -1) {
+            newArr.splice(index, 1)
+        }
+        return newArr
     }
 
     handleChangeChk = (e) => {
         const item = e.target.name;
         const isChecked = e.target.checked;
         this.setState(prevState => ({
-            checkedItemsMealType: prevState.checkedItemsMealType.set(item, isChecked)
+            checkedItemsMealType: prevState.checkedItemsMealType.set(item, isChecked),
         }));
+        if (isChecked) {
+            this.setState(prevState => ({
+                checkedItemsArr: [...prevState.checkedItemsArr, item]
+            }))
+        }
+        else {
+            this.setState({
+                checkedItemsArr: this.removeItemfromArr(item, this.state.checkedItemsArr)
+            })
+        }
+        setTimeout(() => {
+            this.props.toggleChange({
+                chef: this.state.checkedItemsArr
+            })
+        }, 0);
     }
 
     render() {
