@@ -42,10 +42,19 @@ class MealType extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (!_.isEqual(this.props, nextProps)) {
-            this.setState( prevState => ({
-                checkedItemsArr: this.removeItemfromArr(nextProps.currentDelete, this.state.checkedItemsArr),
-                checkedItemsMealType: prevState.checkedItemsMealType.set(nextProps.currentDelete, false)
-            }))
+
+            if (nextProps.clearAll == 'clear') {
+                this.setState({
+                    checkedItemsArr: [],
+                    checkedItemsMealType: new Map()
+                })
+            }
+            else {
+                this.setState(prevState => ({
+                    checkedItemsArr: this.removeItemfromArr(nextProps.currentDelete, this.state.checkedItemsArr),
+                    checkedItemsMealType: prevState.checkedItemsMealType.set(nextProps.currentDelete, false)
+                }))
+            }
             setTimeout(() => {
                 this.props.toggleChange({
                     mealType: this.state.checkedItemsArr
@@ -85,6 +94,12 @@ class MealType extends React.Component {
             })
         }, 0);
     }
+
+    // componentDidMount() {
+    //     this.setState({
+    //         checkedItemsMealType: new Map()
+    //     })
+    // }
 
     render() {
 

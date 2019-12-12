@@ -54,10 +54,18 @@ class Chef extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         if (!_.isEqual(this.props, nextProps)) {
-            this.setState( prevState => ({
-                checkedItemsArr: this.removeItemfromArr(nextProps.currentDelete, this.state.checkedItemsArr),
-                checkedItemsMealType: prevState.checkedItemsMealType.set(nextProps.currentDelete, false)
-            }))
+            if (nextProps.clearAll == 'clear') {
+                this.setState({
+                    checkedItemsArr: [],
+                    checkedItemsMealType: new Map()
+                })
+            }
+            else {
+                this.setState(prevState => ({
+                    checkedItemsArr: this.removeItemfromArr(nextProps.currentDelete, this.state.checkedItemsArr),
+                    checkedItemsMealType: prevState.checkedItemsMealType.set(nextProps.currentDelete, false)
+                }))
+            }
             setTimeout(() => {
                 this.props.toggleChange({
                     chef: this.state.checkedItemsArr

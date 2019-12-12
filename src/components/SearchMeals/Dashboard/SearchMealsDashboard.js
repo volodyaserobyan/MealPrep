@@ -19,7 +19,8 @@ class SearchMealsDashboard extends React.Component {
             cuisineType: [],
             chef: [],
             price: [],
-            currentDelete: ""
+            currentDelete: "",
+            clearAll: ""
         }
     }
 
@@ -30,6 +31,18 @@ class SearchMealsDashboard extends React.Component {
     clearFilterMeal = (item) => {
         this.setState({
             currentDelete: item
+        })
+    }
+
+    clearPrice = () => {
+        this.setState({
+            currentDelete: 0
+        })
+    }
+
+    clearAll = () => {
+        this.setState({
+            clearAll: 'clear'
         })
     }
 
@@ -66,13 +79,14 @@ class SearchMealsDashboard extends React.Component {
         if (!_.isEmpty(this.state.price)) {
             price = <div className="Filter-Result">
                 <p className="Filter-Result_content">Price:</p>
-                <p className="Filter-Result_value">${this.state.price[0]}-${this.state.price[1]}</p>
+                <p className="Filter-Result_value">${this.state.price[0]}-${this.state.price[1]} <img onClick={this.clearPrice} src={deleteIcon} /></p>
             </div>
         }
 
-        if (this.state.currentDelete != "") {
+        if (this.state.currentDelete != "" || this.state.clearAll != "") {
             this.setState({
-                currentDelete: ""
+                currentDelete: "",
+                clearAll: ""
             })
         }
 
@@ -82,18 +96,24 @@ class SearchMealsDashboard extends React.Component {
                     <div className="SearchMealsDashboard-Cont-Filters">
                         <div className="SearchMealsDashboard-Cont-Filters-Heading">
                             <p className="SearchMealsDashboard-Cont-Filters-Heading-1">Filters</p>
-                            <p className="SearchMealsDashboard-Cont-Filters-Heading-2"><img src={deleteIcon} /> Clear all </p>
+                            <p onClick={this.clearAll} className="SearchMealsDashboard-Cont-Filters-Heading-2"><img src={deleteIcon} /> Clear all </p>
                         </div>
                         <MealType
                             toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete} />
-                        <Price toggleChange={this.toggleChange} />
+                            currentDelete={this.state.currentDelete}
+                            clearAll={this.state.clearAll} />
+                        <Price
+                            toggleChange={this.toggleChange}
+                            currentDelete={this.state.currentDelete}
+                            clearAll={this.state.clearAll} />
                         <Chef
                             toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete} />
+                            currentDelete={this.state.currentDelete}
+                            clearAll={this.state.clearAll} />
                         <CuisineType
                             toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete} />
+                            currentDelete={this.state.currentDelete}
+                            clearAll={this.state.clearAll} />
                     </div>
                     <div className="SearchMealsDashboard-Cont-Complete">
                         <div className="SearchMealsDashboard-Cont-Filt">

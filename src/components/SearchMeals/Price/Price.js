@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Slider from "@material-ui/core/Slider";
 import './Price.scss'
 
@@ -7,9 +7,17 @@ const Price = (props) => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        props.toggleChange({price: newValue})
+        props.toggleChange({ price: newValue })
     }
-    // togglechange(value)
+
+    useEffect(() => {
+        if(props.currentDelete == 0 || props.clearAll == 'clear') {
+            setValue([0, 0])
+            props.toggleChange({ price: [] })
+        }
+    },
+        [props.currentDelete, props.clearAll]
+    );
 
     return (
         <div className="SearchMealsDashboard-Cont-Filters-Price">
