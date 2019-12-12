@@ -1,0 +1,132 @@
+.ItemOrder {
+  width: 100%;
+  background: #e5e5e5;
+
+  &-Cont {
+    padding: 100px 103px;
+    display: flex;
+
+    &-Wrapper {
+      display: flex;
+      flex-direction: column;
+      max-width: 708px;
+
+      &_title {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 48px;
+        color: #161616;
+      }
+
+      &_ing {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: rgba(22, 22, 22, 0.74);
+        margin-top: 24px;
+      }
+
+      &_media {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        margin-bottom: 32px;
+
+        &_type {
+          display: flex;
+          flex-direction: column;
+
+          p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 16px;
+            color: rgba(22, 22, 22, 0.74);
+          }
+        }
+
+        &_icons {
+          display: flex;
+
+          p {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 16px;
+            padding: 0 8px;
+            background-color: #fff;
+            color: rgba(22, 22, 22, 0.74);
+          }
+        }
+      }
+
+      &_ingredients {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        &_title {
+          margin-top: 32px;
+          margin-bottom: 16px;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 19px;
+          line-height: 24px;
+          color: #161616;
+        }
+
+        &_content {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 18px;
+          line-height: 27px;
+          color: rgba(22, 22, 22, 0.74);
+        }
+      }
+    }
+
+    &-Order {
+      display: flex;
+      flex-direction: column;
+
+      &_count {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+
+        &_titlebl {
+          display: flex;
+          h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 26px;
+            text-align: center;
+            color: #161616;
+            margin-right: 4px;
+          }
+        }
+
+        &_btns {
+          display: flex;
+
+          &_increment {
+            display: flex;
+
+            &_min,
+            &_plus,
+            p {
+              background: rgba(22, 22, 22, 0.04);
+              border-radius: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

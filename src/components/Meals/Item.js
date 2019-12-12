@@ -3,9 +3,9 @@ import backImg from '../../assets/images/Img (1).png'
 import backImg1 from '../../assets/images/Img (2).png'
 import backImg2 from '../../assets/images/Img (3).png'
 import backImg3 from '../../assets/images/Img (4).png'
-// import image from '../../assets/images/Image.png'
 import IconPapper from '../../assets/images/Union.svg'
 import favIcon from '../../assets/images/Favorite.svg'
+import { NavLink } from 'react-router-dom'
 import './Item.scss'
 
 class Item extends React.Component {
@@ -41,11 +41,11 @@ class Item extends React.Component {
             default:
                 break;
         }
-        // const imageUrl = `url(${require(`../../assets/images/Img (1).png`)})`
+
         return (
             <section className="Meals-Item item">
                 <div className="Meals-Item_img">
-                    <img className="Meals-Item_img_cover" src={img}/>
+                    <img className="Meals-Item_img_cover" src={img} />
                     <img className="Meals-Item_img_favIcon" src={favIcon} />
                 </div>
                 <div className="Meals-Item-Cont">
@@ -79,7 +79,11 @@ class Item extends React.Component {
                 </div>
                 <div className="Meals-Item-Order">
                     <p className="Meals-Item-Order_price">$14.52</p>
-                    <p className="Meals-Item-Order_add">Add to Order</p>
+                    <NavLink to={{
+                        pathname: `/item/:id/${this.props.id}`
+                    }}>
+                        <p className="Meals-Item-Order_add">Add to Order</p>
+                    </NavLink>
                 </div>
             </section>
         )
