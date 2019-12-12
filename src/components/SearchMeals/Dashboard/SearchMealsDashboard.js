@@ -116,6 +116,7 @@ class SearchMealsDashboard extends React.Component {
                             clearAll={this.state.clearAll} />
                     </div>
                     <div className="SearchMealsDashboard-Cont-Complete">
+        {(this.state.price.length != 0 || this.state.mealType.length != 0 || this.state.chef.length != 0 || this.state.cuisineType.length != 0) ? <p>Found 49 of 307</p> : <></> }
                         <div className="SearchMealsDashboard-Cont-Filt">
                             {mealsType}
                             {cuisineType}
