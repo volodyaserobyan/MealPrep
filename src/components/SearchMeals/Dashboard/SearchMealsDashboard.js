@@ -20,8 +20,11 @@ class SearchMealsDashboard extends React.Component {
             chef: [],
             price: [],
             currentDelete: "",
-            clearAll: ""
+            clearAll: "",
+            isOpen: false,
         }
+
+        this.classNameHamburger = ""
     }
 
     toggleChange = (obj) => {
@@ -44,6 +47,22 @@ class SearchMealsDashboard extends React.Component {
         this.setState({
             clearAll: 'clear'
         })
+    }
+
+    handleClick = () => {
+        if (!this.state.isOpen) {
+            this.setState({
+                isOpen: true
+            })
+            this.classNameHamburger = "openFilter"
+        }
+        else {
+            this.setState({
+                isOpen: false
+            })
+
+            this.classNameHamburger = ""
+        }
     }
 
     render() {
@@ -93,7 +112,10 @@ class SearchMealsDashboard extends React.Component {
         return (
             <div className="SearchMealsDashboard">
                 <div className="SearchMealsDashboard-Cont innerWrap">
-                    <div className="SearchMealsDashboard-Cont-Filters">
+                    <div onClick={this.handleClick} className={`filters ${this.classNameHamburger}`}>
+                    <i class="fas fa-filter"></i>
+                    </div>
+                    <div className={`SearchMealsDashboard-Cont-Filters ${this.classNameHamburger}`}>
                         <div className="SearchMealsDashboard-Cont-Filters-Heading">
                             <p className="SearchMealsDashboard-Cont-Filters-Heading-1">Filters</p>
                             <p onClick={this.clearAll} className="SearchMealsDashboard-Cont-Filters-Heading-2"><img src={deleteIcon} /> Clear all </p>
@@ -116,7 +138,7 @@ class SearchMealsDashboard extends React.Component {
                             clearAll={this.state.clearAll} />
                     </div>
                     <div className="SearchMealsDashboard-Cont-Complete">
-        {(this.state.price.length != 0 || this.state.mealType.length != 0 || this.state.chef.length != 0 || this.state.cuisineType.length != 0) ? <p>Found 49 of 307</p> : <></> }
+                        {(this.state.price.length != 0 || this.state.mealType.length != 0 || this.state.chef.length != 0 || this.state.cuisineType.length != 0) ? <p>Found 49 of 307</p> : <></>}
                         <div className="SearchMealsDashboard-Cont-Filt">
                             {mealsType}
                             {cuisineType}

@@ -43,10 +43,10 @@ class Item extends React.Component {
         }
 
         return (
-            <NavLink className="navLink" to={{
+            <NavLink className="navLink Meals-Item item" to={{
                 pathname: `${process.env.PUBLIC_URL}/item/:id/${this.props.id}`
             }}>
-                <section className="Meals-Item item">
+                {/* <section className="Meals-Item item"> */}
                     <div className="Meals-Item_img">
                         <img className="Meals-Item_img_cover" src={img} />
                         <img className="Meals-Item_img_favIcon" src={favIcon} />
@@ -84,7 +84,7 @@ class Item extends React.Component {
                         <p className="Meals-Item-Order_price">$14.52</p>
                         <p className="Meals-Item-Order_add">Add to Order</p>
                     </div>
-                </section>
+                {/* </section> */}
             </NavLink>
         )
     }
