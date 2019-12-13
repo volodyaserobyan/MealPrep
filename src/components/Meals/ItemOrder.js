@@ -10,6 +10,27 @@ import './ItemOrder.scss'
 
 class ItemOrder extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            count: 0
+        }
+    }
+
+    countClick = e => {
+        if (e.target.textContent == "+") {
+            this.setState(state => ({
+                count: state.count + 1
+            }))
+        }
+        else if (this.state.count > 0) {
+            this.setState(state => ({
+                count: state.count - 1
+            }))
+        }
+    }
+
     render() {
         return (
             <section className="ItemOrder">
@@ -48,13 +69,13 @@ class ItemOrder extends React.Component {
                         <div className="ItemOrder-Cont-Order_count">
                             <div className="ItemOrder-Cont-Order_count_titlebl">
                                 <h1 className="ItemOrder-Cont-Order_count_titlebl_title">$26.90</h1>
-                                <p> Serves: 2 </p>
+                                <p>. Serves: 2 </p>
                             </div>
                             <div className="ItemOrder-Cont-Order_count_btns">
                                 <div className="ItemOrder-Cont-Order_count_btns_increment">
-                                    <button className="ItemOrder-Cont-Order_count_btns_increment_min">-</button>
-                                    <p></p>
-                                    <button className="ItemOrder-Cont-Order_count_btns_increment_plus">+</button>
+                                    <p onClick={this.countClick} className="ItemOrder-Cont-Order_count_btns_increment_min">-</p>
+                                    <p>{this.state.count}</p>
+                                    <p onClick={this.countClick} className="ItemOrder-Cont-Order_count_btns_increment_plus">+</p>
                                 </div>
                                 <button className="ItemOrder-Cont-Order_count_btns_order">ADD TO ORDER</button>
                             </div>
@@ -72,7 +93,7 @@ class ItemOrder extends React.Component {
                                     <img src={star} />
                                     <img src={star} />
                                 </div>
-                                <p>19 reviews</p>
+                                <p className="ItemOrder-Cont-Order_chef_info_reviewer">19 reviews</p>
                             </div>
                         </div>
                         <div className="ItemOrder-Cont-Order_bad">

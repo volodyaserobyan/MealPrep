@@ -93,11 +93,14 @@
     &-Order {
       display: flex;
       flex-direction: column;
+      margin-left: 24px;
 
       &_count {
         background-color: #fff;
         display: flex;
         flex-direction: column;
+        padding: 24px;
+        margin-bottom: 24px;
 
         &_titlebl {
           display: flex;
@@ -114,6 +117,7 @@
 
         &_btns {
           display: flex;
+          margin-top: 16px;
 
           &_increment {
             display: flex;
@@ -121,11 +125,121 @@
             &_min,
             &_plus,
             p {
+              padding: 10px 11px;
               background: rgba(22, 22, 22, 0.04);
               border-radius: 2px;
             }
           }
+
+          &_order {
+            background: #9aca3c;
+            border-radius: 2px;
+            color: #fff;
+            padding: 12px 20px;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 9px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ffffff;
+            border: 2px solid transparent;
+            margin-left: 14px;
+          }
         }
+      }
+
+      &_chef {
+          display: flex;
+          align-items: center;
+          background-color: #fff;
+          padding: 24px;
+          margin-bottom: 24px;
+
+          &_info {
+              margin-left: 16px;
+              display: flex;
+              flex-direction: column;
+
+              &_name {
+                font-style: normal;
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 18px;
+                color: #161616;
+              }
+
+              &_reviewer {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 13px;
+                line-height: 20px;
+                color: rgba(22, 22, 22, 0.74);
+              }
+          }
+      }
+
+      &_bad {
+          width: 288px;
+          display: flex;
+          flex-wrap: wrap;
+
+          h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 28px;
+            line-height: 42px;
+            color: #F58436;
+          }
+
+          p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 21px;
+            color: #161616;
+          }
+
+          &_cal {
+              width: 50%;
+              padding-top: 24px;
+              padding-bottom: 24px;
+              padding-left: 24px;
+              padding-right: 67px;
+              background-color: #FFF;
+              border-right: 1px solid rgba(22, 22, 22, 0.1);
+              border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+          }
+
+          &_fat {
+              width: 50%;
+              padding-top: 24px;
+              padding-bottom: 24px;
+              padding-left: 24px;
+              padding-right: 67px;
+              background-color: #FFF;
+              border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+          }
+
+          &_carbs {
+              width: 50%;
+              padding-top: 24px;
+              padding-bottom: 24px;
+              padding-left: 24px;
+              padding-right: 67px;
+              background-color: #FFF;
+              border-right: 1px solid rgba(22, 22, 22, 0.1);
+          }
+
+          &_protein {
+              width: 50%;
+              padding-top: 24px;
+              padding-bottom: 24px;
+              padding-left: 24px;
+              padding-right: 67px;
+              background-color: #FFF;
+          }
       }
     }
   }

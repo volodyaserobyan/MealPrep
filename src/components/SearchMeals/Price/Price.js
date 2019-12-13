@@ -11,7 +11,7 @@ const Price = (props) => {
     }
 
     useEffect(() => {
-        if(props.currentDelete == 0 || props.clearAll == 'clear') {
+        if(props.currentDelete == 1 || props.clearAll == 'clear') {
             setValue([0, 0])
             props.toggleChange({ price: [] })
         }

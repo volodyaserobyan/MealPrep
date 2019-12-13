@@ -36,7 +36,7 @@ class SearchMealsDashboard extends React.Component {
 
     clearPrice = () => {
         this.setState({
-            currentDelete: 0
+            currentDelete: 1
         })
     }
 
