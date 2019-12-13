@@ -44,7 +44,7 @@ class Item extends React.Component {
 
         return (
             <NavLink className="navLink" to={{
-                pathname: `/item/:id/${this.props.id}`
+                pathname: `${process.env.PUBLIC_URL}/item/:id/${this.props.id}`
             }}>
                 <section className="Meals-Item item">
                     <div className="Meals-Item_img">

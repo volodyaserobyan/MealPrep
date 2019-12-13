@@ -43,7 +43,7 @@ class Meals extends React.Component {
                         {[1, 2, 3, 4, 5, 6, 7, 8].map(id => <Item key={id} id={id} />)}
                     </OwlCarousel>
                     <NavLink to={{
-                                    pathname: '/meals'
+                                    pathname: `${process.env.PUBLIC_URL}/meals`
                                 }}>
                         <button className="Meals-Cont_allbutton">View Meals</button>
                     </NavLink>

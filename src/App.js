@@ -12,9 +12,9 @@ function App() {
       <PublicLayout>
         <BrowserRouter basename="/projects/mealPrep/build">
           <Switch>
-            <Route path='/' component={Dashboard} exact />
-            <Route path='/meals' component={MealsDashboard} />
-            <Route path='/item/:id/' component={ItemOrder} />
+            <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
+            <Route path={`${process.env.PUBLIC_URL}/meals`} component={MealsDashboard} />
+            <Route path={`${process.env.PUBLIC_URL}/item/:id/`} component={ItemOrder} />
           </Switch>
           </BrowserRouter>
       </PublicLayout>
