@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <PublicLayout>
-        <BrowserRouter>
+        <BrowserRouter basename="/projects/mealPrep/build">
           <Switch>
             <Route path='/' component={Dashboard} exact />
             <Route path='/meals' component={MealsDashboard} />
