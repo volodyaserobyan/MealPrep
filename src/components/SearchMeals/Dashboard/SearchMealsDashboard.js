@@ -5,6 +5,7 @@ import Chef from '../Chef/Chef'
 import CuisineType from '../CuisineType/CuisineType'
 import Item from '../../Meals/Item'
 import deleteIcon from '../../../assets/images/delete.svg'
+import SearchIcon from '../../../assets/images/SearchIcon.svg'
 import './SearchMealsDashboard.scss'
 
 let _ = require('lodash')
@@ -109,11 +110,20 @@ class SearchMealsDashboard extends React.Component {
             })
         }
 
-        return (
+        return (<>
+            <div className="SearchMeals">
+                <h1 className="SearchMeals-Title">Search Your Meals</h1>
+                <div className="SearchMeals-Cont">
+                    <input className="SearchMeals-Cont-Search" placeholder={'Search'} />
+                    <div className="SearchMeals-Cont-Icon">
+                        <img src={SearchIcon} />
+                    </div>
+                </div>
+            </div>
             <div className="SearchMealsDashboard">
                 <div className="SearchMealsDashboard-Cont innerWrap">
                     <div onClick={this.handleClick} className={`filters ${this.classNameHamburger}`}>
-                    <i class="fas fa-filter"></i>
+                        <i class="fas fa-filter"></i>
                     </div>
                     <div className={`SearchMealsDashboard-Cont-Filters ${this.classNameHamburger}`}>
                         <div className="SearchMealsDashboard-Cont-Filters-Heading">
@@ -151,6 +161,7 @@ class SearchMealsDashboard extends React.Component {
                     </div>
                 </div>
             </div>
+        </>
         )
     }
 }

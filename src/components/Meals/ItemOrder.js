@@ -80,22 +80,6 @@ class ItemOrder extends React.Component {
                                 <button className="ItemOrder-Cont-Order_count_btns_order">ADD TO ORDER</button>
                             </div>
                         </div>
-                        <div className="ItemOrder-Cont-Order_chef">
-                            <div className="ItemOrder-Cont-Order_chef_img">
-                                <img src={ChefImg} />
-                            </div>
-                            <div className="ItemOrder-Cont-Order_chef_info">
-                                <p className="ItemOrder-Cont-Order_chef_info_name">Jacob Hawkins</p>
-                                <div className="ItemOrder-Cont-Order_chef_info_star">
-                                    <img src={star} />
-                                    <img src={star} />
-                                    <img src={star} />
-                                    <img src={star} />
-                                    <img src={star} />
-                                </div>
-                                <p className="ItemOrder-Cont-Order_chef_info_reviewer">19 reviews</p>
-                            </div>
-                        </div>
                         <div className="ItemOrder-Cont-Order_bad">
                             <div className="ItemOrder-Cont-Order_bad_cal">
                                 <h1>245</h1>

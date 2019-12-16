@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../../assets/images/Asset 1 1.svg'
 import ShopImg from '../../assets/images/Vector.svg'
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import './NavBar.scss'
 
@@ -40,11 +41,11 @@ class NavBar extends React.Component {
     }
 
     render() {
-        if(this.state.isWelcome) {
+        if (this.state.isWelcome) {
             return (
                 <Redirect to={{
                     pathname: '/'
-                }}/>
+                }} />
             )
         }
         return (
@@ -52,13 +53,25 @@ class NavBar extends React.Component {
                 <div className="NavBar-Cont innerWrap">
                     <section className="NavBar-Cont-Menu">
                         <div onClick={this.handleClickWelcome} className="NavBar-Cont-Menu_logoImg">
-                           <a href="/" ><img src={Logo} className="NavBar-Cont-Logo" /></a>
+                            <a href="/" ><img src={Logo} className="NavBar-Cont-Logo" /></a>
                         </div>
                         <div className={`NavBar-Cont-Menu_cont ${this.classNameHamburger}`}>
-                            <a href="#">Meals</a>
-                            <a href="#">About us</a>
-                            <a href="#">Blog</a>
-                            <a href="#">Contacts</a>
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/meals`
+                            }}>Meals
+                                </Link>
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/about`
+                            }}>About us
+                                </Link>
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/blog`
+                            }}>Blog
+                                </Link>
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/contacts`
+                            }}>Contacts
+                            </Link>
                         </div>
                         <div onClick={this.handleClick} className={`m-lines ${this.classNameHamburger}`}>
                             <div className="">
