@@ -1,0 +1,52 @@
+.PlansComplete {
+  width: 100%;
+  background: #e5e5e5;
+
+  &-Cont {
+    padding: 100px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-Title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 50px;
+
+      h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 48px;
+        text-align: center;
+        color: #161616;
+      }
+
+      p {
+        font-style: normal;
+        font-weight: normal;
+        margin-top: 24px;
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
+        color: rgba(22, 22, 22, 0.74);
+      }
+    }
+
+    &-Collector {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .Plans-Item {
+            flex: 0 0 25%;
+            margin-top: 24px;
+            
+        }
+    }
+  }
+}

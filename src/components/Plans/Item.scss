@@ -1,4 +1,14 @@
 .Plans-Item {
+  // display: flex;
+  // flex: 1;
+  // margin: 0 12px;
+  // justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  border-radius: 4px;
+  // padding: 32px 24px 24px;
+
+  &-Cont {
     display: flex;
     flex: 1;
     margin: 0 12px;
@@ -9,101 +19,102 @@
     border-radius: 4px;
     padding: 32px 24px 24px;
 
-  &_title {
-    img {
-      margin-bottom: 16px;
-    }
-    h1 {
-      position: relative;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 19px;
-      line-height: 24px;
-      text-align: center;
-      color: #161616;
-      padding-bottom: 24px;
-
-      &::after {
-        content: "";
-        width: 32px;
-        margin: 12px auto 0;
-        height: 2px;
-        display: block;
-        background: rgba(22, 22, 22, 0.22);
-    }
-    }
-  }
-
-  &_price {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-bottom: 23px;
-
-    &_context {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 13px;
-      line-height: 20px;
-      text-align: center;
-      padding-bottom: 3px;
-      color: rgba(22, 22, 22, 0.74);
-    }
-
-    &_amount {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      p {
-        color: rgba(22, 22, 22, 0.74);
+    &_title {
+      img {
+        margin-bottom: 16px;
       }
       h1 {
+        position: relative;
         font-style: normal;
         font-weight: bold;
-        font-size: 26px;
-        line-height: 32px;
+        font-size: 19px;
+        line-height: 24px;
         text-align: center;
+        color: #161616;
+        padding-bottom: 24px;
+
+        &::after {
+          content: "";
+          width: 32px;
+          margin: 12px auto 0;
+          height: 2px;
+          display: block;
+          background: rgba(22, 22, 22, 0.22);
+        }
       }
     }
-  }
 
-  &_context {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    &_gal {
-      width: 100%;
+    &_price {
       display: flex;
-      margin-bottom: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 23px;
 
-      p {
+      &_context {
         font-style: normal;
         font-weight: normal;
-        padding-left: 14px;
         font-size: 13px;
         line-height: 20px;
-        color: #161616;
+        text-align: center;
+        padding-bottom: 3px;
+        color: rgba(22, 22, 22, 0.74);
+      }
+
+      &_amount {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        p {
+          color: rgba(22, 22, 22, 0.74);
+        }
+        h1 {
+          font-style: normal;
+          font-weight: bold;
+          font-size: 26px;
+          line-height: 32px;
+          text-align: center;
+        }
       }
     }
-  }
 
-  &_button {
-    width: 100%;
-    border: 0;
-    margin-top: 26px;
-    background: #9aca3c;
-    border-radius: 2px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #ffffff;
-    padding: 12px 16px;
+    &_context {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      &_gal {
+        width: 100%;
+        display: flex;
+        margin-bottom: 8px;
+
+        p {
+          font-style: normal;
+          font-weight: normal;
+          padding-left: 14px;
+          font-size: 13px;
+          line-height: 20px;
+          color: #161616;
+        }
+      }
+    }
+
+    &_button {
+      width: 100%;
+      border: 0;
+      margin-top: 26px;
+      background: #9aca3c;
+      border-radius: 2px;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding: 12px 16px;
+    }
   }
 }
