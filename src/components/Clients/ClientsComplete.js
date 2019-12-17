@@ -9,7 +9,9 @@ class ClientsComplete extends React.Component {
             <div className="ClientsComplete">
                 <div className="ClientsComplete-Cont">
                     <h1>Testimonials</h1>
-                    {[1, 2, 3, 4, 5, 6, 7].map(id => <Item key={id}/>)}
+                    <div>
+                        {[1, 2, 3, 4, 5, 6, 7].map(id => <Item key={id} />)}
+                    </div>
                 </div>
             </div>
         )

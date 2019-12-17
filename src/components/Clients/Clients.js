@@ -28,9 +28,9 @@ class Clients extends React.Component {
                 <div className="Clients-Cont innerWrap">
                     <div className="Clients-Cont-Title">
                         <h1>What our clients say</h1>
-                        <Link to={{
+                        {/* <Link to={{
                             pathname: `${process.env.PUBLIC_URL}/testimonials`
-                        }}><div><p className="Clients-Cont-Title_view">View all Plans</p> <img src={rightArrow} /></div></Link>
+                        }}><div><p className="Clients-Cont-Title_view">View all Plans</p> <img src={rightArrow} /></div></Link> */}
                     </div>
                     <div className="Clients-Cont-Item">
                         <OwlCarousel
