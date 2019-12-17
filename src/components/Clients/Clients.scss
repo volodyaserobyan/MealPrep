@@ -11,17 +11,28 @@
     padding: 0 32px;
 
     &-Title {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 42px;
-      line-height: 48px;
-      color: #161616;
-      padding-bottom: 50px;
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        // margin-right: 13px;
+        p {
+          margin-right: 13px;
+        }
+      }
+      h1 {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 48px;
+        color: #161616;
+        padding-bottom: 50px;
+      }
     }
 
     &-Item {
       display: flex;
-      
     }
   }
 }
