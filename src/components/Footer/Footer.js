@@ -3,6 +3,7 @@ import Logo from '../../assets/images/Logo 1 Transparent PNG 1.svg'
 import Fb from '../../assets/images/Vector (1).svg'
 import Twitter from '../../assets/images/Vector (2).svg'
 import Inst from '../../assets/images/Vector (3).svg'
+import { Link } from 'react-router-dom'
 import './Footer.scss'
 
 class Footer extends React.Component {
@@ -15,25 +16,45 @@ class Footer extends React.Component {
                         <img src={Logo} />
                     </div>
                     <div className="Footer-Cont-Menu">
-                        <a href="#">Meals</a>
-                        <a href="#">About us</a>
-                        <a href="#">Blog</a>
-                        <a href="#">Contacts</a>
-                        <a href="#">Help</a>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/meals`
+                        }}>Meals
+                        </Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/about`
+                        }}>About us
+                        </Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/blog`
+                        }}>Blog</Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/contacts`
+                        }}>Contacts</Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/help`
+                        }}>Help</Link>
                     </div>
                     <div className="Footer-Cont-Terms">
-                        <a href="#">Plans</a>
-                        <a href="#">Partners</a>
-                        <a href="#">Testimonials</a>
-                        <a href="#">Terms & Conditions</a>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/plans`
+                        }}>Plans</Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/partners`
+                        }}>Partners</Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/testimonials`
+                        }}>Testimonials</Link>
+                        <Link to={{
+                            pathname: `${process.env.PUBLIC_URL}/conditions`
+                        }}>Terms & Conditions</Link>
                     </div>
                     <div className="Footer-Cont-Contacts">
                         <p>971 Timber Wolf Trail undefined Stamford, Delaware 90039 United States</p>
                         <p>(270) 555-0117</p>
                         <div className="Footer-Cont-Contacts_icons">
-                            <img src={Inst}/>
-                            <img src={Fb}/>
-                            <img src={Twitter}/>
+                            <img src={Inst} />
+                            <img src={Fb} />
+                            <img src={Twitter} />
                         </div>
                     </div>
                 </div>
