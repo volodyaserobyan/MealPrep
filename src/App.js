@@ -5,6 +5,7 @@ import SearchMealsDashboard from './components/SearchMeals/Dashboard/SearchMeals
 import About from './components/About/About'
 import Help from './components/Help/Help'
 import PlansComplete from './components/Plans/PlansComplete'
+import BlogComplete from './components/Blog/BlogComplete'
 import ItemOrder from './components/Meals/ItemOrder'
 import Terms from './components/Terms/Terms'
 import ClientsComplete from './components/Clients/ClientsComplete'
@@ -27,6 +28,7 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/conditions`} component={Terms} />
             <Route path={`${process.env.PUBLIC_URL}/testimonials`} component={ClientsComplete} />
             <Route path={`${process.env.PUBLIC_URL}/item/:id/`} component={ItemOrder} />
+            <Route path={`${process.env.PUBLIC_URL}/blogItem/:id/`} component={BlogComplete} />
           </Switch>
         </PublicLayout>
       </BrowserRouter>

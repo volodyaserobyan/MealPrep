@@ -47,6 +47,10 @@
       line-height: 28px;
       margin-top: 12px;
       color: #161616;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     &_context {
@@ -56,6 +60,10 @@
       font-size: 13px;
       line-height: 20px;
       color: rgba(22, 22, 22, 0.74);
+      -webkit-line-clamp: 3;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     &_date {
