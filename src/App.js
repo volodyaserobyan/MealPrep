@@ -8,6 +8,7 @@ import PlansComplete from './components/Plans/PlansComplete'
 import ItemOrder from './components/Meals/ItemOrder'
 import Terms from './components/Terms/Terms'
 import ClientsComplete from './components/Clients/ClientsComplete'
+import Blog from './components/Blog/Blog'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
             <Route path={`${process.env.PUBLIC_URL}/meals`} component={SearchMealsDashboard} />
+            <Route path={`${process.env.PUBLIC_URL}/blog`} component={Blog} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
             <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />
