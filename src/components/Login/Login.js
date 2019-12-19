@@ -43,7 +43,7 @@ class Login extends React.Component {
 
                     <div className="Login-Cont-Member">
                         <p>Not a member? </p>
-                        <Link to={{
+                        <Link className="link" to={{
                             pathname: `${process.env.PUBLIC_URL}/signup`
                         }}>
                             Sign Up
