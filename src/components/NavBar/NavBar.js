@@ -87,8 +87,15 @@ class NavBar extends React.Component {
                             <p>0</p> <p className="NavBar-Cont-Login_shop_items">Items</p>
                         </div>
                         <div className="NavBar-Cont-Login_cont">
+                        <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/signup`
+                            }}>
                             <button className="NavBar-Cont-Login_cont_signUp">Sign Up</button>
-                            <button className="NavBar-Cont-Login_cont_signIn">Sign In</button>
+                            </Link>
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/login`
+                            }}><button className="NavBar-Cont-Login_cont_signIn">Sign In</button>
+                            </Link>
                         </div>
                     </section>
                 </div>
