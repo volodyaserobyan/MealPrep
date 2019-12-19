@@ -9,7 +9,7 @@
   &-Cont {
     width: 100%;
     max-width: 808px;
-    padding: 100px 0px;
+    padding: 100px 50px;
 
     &_title {
       font-style: normal;
@@ -283,7 +283,7 @@
   width: 100%;
 
   &-Cont {
-    padding: 100px 0px;
+    padding: 100px 50px;
 
     >h1 {
       font-style: normal;
@@ -293,6 +293,31 @@
       text-align: center;
       color: #161616;
       margin-bottom: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .BlogComplete-Cont-LeaveComment_inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .BlogComplete-Cont-Media_icons {
+    flex-direction: column;
+
+    p {
+      margin-top: 12px;
+    }
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .BlogComplete-Cont-Recommend {
+    flex-direction: column;
+
+    p {
+      margin-top: 12px;
     }
   }
 }

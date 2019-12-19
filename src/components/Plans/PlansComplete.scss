@@ -50,3 +50,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .PlansComplete-Cont-Collector {
+    .Plans-Item {
+      flex: 0 0 33.3%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .PlansComplete-Cont-Collector {
+    .Plans-Item {
+      flex: 0 0 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .PlansComplete-Cont-Collector {
+    .Plans-Item {
+      flex: 0 0 100%;
+    }
+  }
+}

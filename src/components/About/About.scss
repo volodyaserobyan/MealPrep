@@ -192,5 +192,16 @@
       }
     }
   }
+}
 
+@media screen and (max-width: 768px) {
+  .About-Cont-Who {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .About-Mission-Cont {
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -78,3 +78,10 @@
     color: #161616 !important;
     border-bottom: 1px solid #F58436;
 }
+
+@media screen and (max-width: 545px) {
+  .Blog-Cont-Title_content {
+    display: flex;
+    flex-direction: column;
+  }
+}
