@@ -1,6 +1,7 @@
 import React from 'react'
 import fbIcon from '../../assets/images/bx_bxl-facebook-square.svg'
 import googleIcon from '../../assets/images/VectorGoogle.svg'
+import Input from '../Forms/Input'
 import { Link } from 'react-router-dom'
 
 import './Login.scss'

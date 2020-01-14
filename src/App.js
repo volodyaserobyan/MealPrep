@@ -12,6 +12,7 @@ import ClientsComplete from './components/Clients/ClientsComplete'
 import Blog from './components/Blog/Blog'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
+import ScrollToTop from './ScrollToTop'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <BrowserRouter basename="/projects/mealPrep/build">
         <PublicLayout>
+          <ScrollToTop />
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
             <Route path={`${process.env.PUBLIC_URL}/meals`} component={SearchMealsDashboard} />

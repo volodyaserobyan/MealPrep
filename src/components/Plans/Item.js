@@ -1,5 +1,8 @@
 import React from 'react'
-import group1 from '../../assets/images/Group 1.svg'
+import ItemCover1 from '../../assets/images/Plans-Img.png'
+import ItemCover2 from '../../assets/images/Plans-Img (1).png'
+import ItemCover3 from '../../assets/images/Plans-Img (2).png'
+import ItemCover4 from '../../assets/images/Plans-Img (3).png'
 import vectorGreen from '../../assets/images/VectorGreen.svg'
 
 import './Item.scss'
@@ -7,27 +10,39 @@ import './Item.scss'
 class Item extends React.Component {
 
     render() {
+        let img = <></>
+        switch (this.props.id) {
+            case 1: {
+                img = ItemCover1
+                break;
+            }
+            case 2: {
+                img = ItemCover2
+                break
+            }
+            case 3: {
+                img = ItemCover3
+                break
+            }
+            case 4: {
+                img = ItemCover4
+                break
+            }
+            default: {
+
+            }
+        }
         return (
             <section className="Plans-Item">
+                <div className="Plans-Item-Img">
+                    <img src={img} alt="" />
+                </div>
                 <div className="Plans-Item-Cont">
-                    <div className="Plans-Item-Cont_title">
-                        <img src={group1} alt="" />
-                        <h1>Classic</h1>
-                    </div>
-                    <div className="Plans-Item-Cont_price">
-                        <p className="Plans-Item-Cont_price_context">Starting at</p>
-                        <div className="Plans-Item-Cont_price_amount">
-                            <h1>$99</h1>
-                            <p>/ week</p>
-                        </div>
-                    </div>
-                    <div className="Plans-Item-Cont_context">
-                        <div className="Plans-Item-Cont_context_gal"><img src={vectorGreen} /><p>Velit minim amet minim</p></div>
-                        <div className="Plans-Item-Cont_context_gal"><img src={vectorGreen} /><p>Pariatur pariatur culpa qui</p></div>
-                        <div className="Plans-Item-Cont_context_gal"><img src={vectorGreen} /><p>Minim veniam sunt cupidatat</p></div>
-                        <div className="Plans-Item-Cont_context_gal"><img src={vectorGreen} /><p>Cillum tempor esse Lorem</p></div>
-                    </div>
-                    <button className="Plans-Item-Cont_button">SELECT</button>
+                    <h1 className="Plans-Item-Cont_number">4</h1>
+                    <h1 className="Plans-Item-Cont_desc">Meals / Week</h1>
+                    <p>$12 / Meal • $80 / Week</p>
+
+                    <button className="Plans-Item-Cont_button">SELECT THIS PLAN</button>
                 </div>
             </section>
         )
