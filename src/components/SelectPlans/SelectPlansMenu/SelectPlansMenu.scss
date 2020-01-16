@@ -1,5 +1,5 @@
 .SelectPlansMenu {
-    margin-top: 100px;
+  margin-top: 100px;
   .SelectPlansMenu-Title {
     width: 100%;
     display: flex;
@@ -20,7 +20,46 @@
         font-size: 13px;
         line-height: 16px;
         color: #161616;
+        margin-right: 12px;
+      }
+      .Select {
+        width: 200px;
       }
     }
+  }
+
+  &-Table {
+    display: flex;
+    flex-wrap: wrap;
+
+    .item {
+      width: 234px;
+      flex: 1 1 auto;
+    }
+
+    .Meals-Item {
+      margin: 24px 0px 0px 24px;
+      padding: 0;
+
+      .Meals-Item_img {
+        overflow: hidden;
+      }
+    }
+  }
+
+  button {
+    margin: 16px auto 112px;
+    display: block;
+    background: rgba(22, 22, 22, 0.22);
+    border-radius: 2px;
+    border: none;
+    padding: 12px 28px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
   }
 }

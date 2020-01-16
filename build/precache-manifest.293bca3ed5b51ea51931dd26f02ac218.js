@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4bc6ea604e4645be6a9a84d31ea8ed37",
+    "revision": "df9fce54ed8374179e895a334d22d449",
     "url": "/react/meal-prep/build/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react/meal-prep/build/static/css/2.16aca965.chunk.css"
   },
   {
-    "revision": "f5bfacac94a23731c743",
-    "url": "/react/meal-prep/build/static/css/main.0c86b5fe.chunk.css"
+    "revision": "4dec860cd9fe21559c9c",
+    "url": "/react/meal-prep/build/static/css/main.52f5703d.chunk.css"
   },
   {
     "revision": "923399e4aa3fc5b13a36",
     "url": "/react/meal-prep/build/static/js/2.047591e6.chunk.js"
   },
   {
-    "revision": "f5bfacac94a23731c743",
-    "url": "/react/meal-prep/build/static/js/main.5c3d9d7e.chunk.js"
+    "revision": "4dec860cd9fe21559c9c",
+    "url": "/react/meal-prep/build/static/js/main.afb0720b.chunk.js"
   },
   {
     "revision": "37608deb70a4e5c21b03",
