@@ -2,7 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "http://greatexpertdev.site/react/meal-prep/build/",
   "dependencies": {
     "@gilbarbara/react-range-slider": "^0.5.0",
     "@loadable/component": "^5.11.0",
