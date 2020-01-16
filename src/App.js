@@ -13,6 +13,7 @@ import Blog from './components/Blog/Blog'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import ScrollToTop from './ScrollToTop'
+import SelectPlans from './components/SelectPlans/SelectPlans'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
@@ -35,6 +36,7 @@ function App() {
             <Route path={`${process.env.PUBLIC_URL}/testimonials`} component={ClientsComplete} />
             <Route path={`${process.env.PUBLIC_URL}/item/:id/`} component={ItemOrder} />
             <Route path={`${process.env.PUBLIC_URL}/blogItem/:id/`} component={BlogComplete} />
+            <Route path={`${process.env.PUBLIC_URL}/selectplans`} component={SelectPlans} />
           </Switch>
         </PublicLayout>
       </BrowserRouter>

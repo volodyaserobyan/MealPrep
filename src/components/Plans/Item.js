@@ -3,11 +3,34 @@ import ItemCover1 from '../../assets/images/Plans-Img.png'
 import ItemCover2 from '../../assets/images/Plans-Img (1).png'
 import ItemCover3 from '../../assets/images/Plans-Img (2).png'
 import ItemCover4 from '../../assets/images/Plans-Img (3).png'
-import vectorGreen from '../../assets/images/VectorGreen.svg'
+import { Redirect } from 'react-router-dom';
 
 import './Item.scss'
 
 class Item extends React.Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            isAuth: false,
+            isDashboard: false
+        }
+    }
+
+    handleClick = e => {
+        e.preventDefault()
+
+        if (this.props.isDashboard) {
+            this.setState({
+                isDashboard: true
+            })
+        } else {
+            this.setState({
+                isAuth: true
+            })
+        }
+    }
 
     render() {
         let img = <></>
@@ -32,6 +55,21 @@ class Item extends React.Component {
 
             }
         }
+        if (this.state.isAuth) {
+            return (
+                <Redirect to={{
+                    pathname: `${process.env.PUBLIC_URL}/selectplans/signup`
+                }} />
+            )
+        }
+
+        if (this.state.isDashboard) {
+            return (
+                <Redirect to={{
+                    pathname: `${process.env.PUBLIC_URL}/selectplans/menu`
+                }} />
+            )
+        }
         return (
             <section className="Plans-Item">
                 <div className="Plans-Item-Img">
@@ -42,7 +80,7 @@ class Item extends React.Component {
                     <h1 className="Plans-Item-Cont_desc">Meals / Week</h1>
                     <p>$12 / Meal • $80 / Week</p>
 
-                    <button className="Plans-Item-Cont_button">SELECT THIS PLAN</button>
+                    <button onClick={this.handleClick} className="Plans-Item-Cont_button">SELECT THIS PLAN</button>
                 </div>
             </section>
         )
