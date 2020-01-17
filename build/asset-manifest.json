@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react/meal-prep/build/static/css/main.52f5703d.chunk.css",
-    "main.js": "/react/meal-prep/build/static/js/main.afb0720b.chunk.js",
-    "main.js.map": "/react/meal-prep/build/static/js/main.afb0720b.chunk.js.map",
+    "main.css": "/react/meal-prep/build/static/css/main.ede5be10.chunk.css",
+    "main.js": "/react/meal-prep/build/static/js/main.d2762250.chunk.js",
+    "main.js.map": "/react/meal-prep/build/static/js/main.d2762250.chunk.js.map",
     "runtime-main.js": "/react/meal-prep/build/static/js/runtime-main.d1dae875.js",
     "runtime-main.js.map": "/react/meal-prep/build/static/js/runtime-main.d1dae875.js.map",
     "static/css/2.16aca965.chunk.css": "/react/meal-prep/build/static/css/2.16aca965.chunk.css",
-    "static/js/2.047591e6.chunk.js": "/react/meal-prep/build/static/js/2.047591e6.chunk.js",
-    "static/js/2.047591e6.chunk.js.map": "/react/meal-prep/build/static/js/2.047591e6.chunk.js.map",
+    "static/js/2.d27a6374.chunk.js": "/react/meal-prep/build/static/js/2.d27a6374.chunk.js",
+    "static/js/2.d27a6374.chunk.js.map": "/react/meal-prep/build/static/js/2.d27a6374.chunk.js.map",
     "index.html": "/react/meal-prep/build/index.html",
-    "precache-manifest.293bca3ed5b51ea51931dd26f02ac218.js": "/react/meal-prep/build/precache-manifest.293bca3ed5b51ea51931dd26f02ac218.js",
+    "precache-manifest.29a1113bf637bf48a05a18f256efa428.js": "/react/meal-prep/build/precache-manifest.29a1113bf637bf48a05a18f256efa428.js",
     "service-worker.js": "/react/meal-prep/build/service-worker.js",
     "static/css/2.16aca965.chunk.css.map": "/react/meal-prep/build/static/css/2.16aca965.chunk.css.map",
-    "static/css/main.52f5703d.chunk.css.map": "/react/meal-prep/build/static/css/main.52f5703d.chunk.css.map",
+    "static/css/main.ede5be10.chunk.css.map": "/react/meal-prep/build/static/css/main.ede5be10.chunk.css.map",
     "static/media/Meals.scss": "/react/meal-prep/build/static/media/Arrow-right.e8b1450f.svg",
     "static/media/Asset 1 1.svg": "/react/meal-prep/build/static/media/Asset 1 1.47ad7610.svg",
     "static/media/Coffee.svg": "/react/meal-prep/build/static/media/Coffee.d8bfe3c5.svg",
@@ -84,8 +84,8 @@
   "entrypoints": [
     "static/js/runtime-main.d1dae875.js",
     "static/css/2.16aca965.chunk.css",
-    "static/js/2.047591e6.chunk.js",
-    "static/css/main.52f5703d.chunk.css",
-    "static/js/main.afb0720b.chunk.js"
+    "static/js/2.d27a6374.chunk.js",
+    "static/css/main.ede5be10.chunk.css",
+    "static/js/main.d2762250.chunk.js"
   ]
 }
