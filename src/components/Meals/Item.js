@@ -5,10 +5,23 @@ import backImg2 from '../../assets/images/Img (3).png'
 import backImg3 from '../../assets/images/Img (4).png'
 import IconPapper from '../../assets/images/Union.svg'
 import favIcon from '../../assets/images/Favorite.svg'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import './Item.scss'
+import { addToCard } from '../../action/Action'
+const _ = require("lodash");
+
 
 class Item extends React.Component {
+
+    addToCard = () => {
+        const obj = {
+            id: 4,
+            title: 'Pamidorov Dzvadzex',
+            context: 'Dzu Pamidor'
+        }
+        this.props.fetchItemsToCard(obj)
+    }
 
     render() {
         let img
@@ -43,10 +56,10 @@ class Item extends React.Component {
         }
 
         return (
-            <NavLink className="navLink Meals-Item item" to={{
-                pathname: `${process.env.PUBLIC_URL}/item/:id/${this.props.id}`
-            }}>
-                {/* <section className="Meals-Item item"> */}
+            <section className="Meals-Item item">
+                <NavLink className="navLink" to={{
+                    pathname: `${process.env.PUBLIC_URL}/item/:id/${this.props.id}`
+                }}>
                     <div className="Meals-Item_img">
                         <img className="Meals-Item_img_cover" src={img} />
                         <img className="Meals-Item_img_favIcon" src={favIcon} />
@@ -80,14 +93,20 @@ class Item extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="Meals-Item-Order">
-                        <p className="Meals-Item-Order_price">$14.52</p>
-                        <p className="Meals-Item-Order_add">Add to Order</p>
-                    </div>
-                {/* </section> */}
-            </NavLink>
+                </NavLink>
+                <div className="Meals-Item-Order">
+                    <p className="Meals-Item-Order_price">$14.52</p>
+                    <p onClick={this.addToCard} className="Meals-Item-Order_add">Add to Order</p>
+                </div>
+            </section>
         )
     }
 }
 
-export default Item
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchItemsToCard: data => dispatch(addToCard(data))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Item)

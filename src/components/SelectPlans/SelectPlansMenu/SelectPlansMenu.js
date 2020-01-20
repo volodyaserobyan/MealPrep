@@ -2,7 +2,10 @@ import React from 'react'
 import Select from 'react-select'
 import Item from '../../Meals/Item'
 import cancelIcon from '../../../assets/images/Vector.png'
+import { connect } from 'react-redux'
 import './SelectPlansMenu.scss'
+
+const _ = require("lodash");
 
 class SelectPlansMenu extends React.Component {
 
@@ -56,7 +59,11 @@ class SelectPlansMenu extends React.Component {
                         </div>
                     </div>
                     <div className="SelectPlansMenu-Meals-Content">
-
+                        {this.props.itemData.map((item, id) =>
+                            <div key={id}>
+                                <h4>{item.title}</h4>
+                                <p>{item.context}</p>
+                            </div>)}
                     </div>
                     <div className="SelectPlansMenu-Meals-Checkout">
                         <button>CHECKOUT</button>
@@ -67,4 +74,10 @@ class SelectPlansMenu extends React.Component {
     }
 }
 
-export default SelectPlansMenu
+const mapStateToProps = state => {
+    return {
+        itemData: state.addToCardReducer.item
+    }
+}
+
+export default connect(mapStateToProps)(SelectPlansMenu)

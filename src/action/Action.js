@@ -4,3 +4,10 @@ export const blogItems = data => {
         blog: data
     }
 }
+
+export const addToCard = data => {
+    return {
+        type: 'ADD_TO_CARD',
+        item: data
+    }
+}
