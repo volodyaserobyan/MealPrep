@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PublicLayout from './components/PublicLayout/PublicLayout'
 import Dashboard from './Dashboard'
 import SearchMealsDashboard from './components/SearchMeals/Dashboard/SearchMealsDashboard'
@@ -14,10 +14,56 @@ import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import ScrollToTop from './ScrollToTop'
 import SelectPlans from './components/SelectPlans/SelectPlans'
+import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
+import { addItemsToDB, getItemsFromDB, deleteItemsFromDB } from './action/Action';
 
-function App() {
+const App = props => {
+
+  // useEffect(() => {
+    // let mealTypeArr = ['low carb', 'high carb', 'salads', 'budget friendly ooptions']
+    // let cuisineTypeArr = ['American', 'British', 'Chinase', 'French', 'Italian', 'Mexican']
+    // for (let i = 0; i <= 50; i++) {
+    //   const item = {
+    //     title: `food${i}`,
+    //     desc: `food${i} desc`,
+    //     servies: i,
+    //     price: i * 10,
+    //     ingredients: 'dsfd,sbfkhdsfbkldsfbsdjhk',
+    //     summary: {
+    //       ncarbs: i,
+    //       "test summary": "fgdgf",
+    //       calories: i + 2,
+    //       fat: i + 3,
+    //       protein: i + 12
+    //     },
+    //     filterTags: {
+    //       selects: [
+    //         {
+    //           name: "meal type",
+    //           values: [mealTypeArr[Math.floor(Math.random() * mealTypeArr.length)]]
+    //         },
+    //         {
+    //           name: 'cuisine type',
+    //           values: [cuisineTypeArr[Math.floor(Math.random() * cuisineTypeArr.length)]]
+    //         }
+    //       ],
+    //       ranges: [
+    //         {
+    //           name: 'price',
+    //           value: i * 15
+    //         }
+    //       ]
+    //     }
+    //   }
+    //   props.addItemstoDb('https://andoghevian-chef-app.herokuapp.com/meals', item)
+    // }
+    // console.log(props)
+    // props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals')
+    // props.deleteItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals/5e42a88dbfabf100177cfe8a')
+  // }, [])
+
   return (
     <div className="App">
       <BrowserRouter basename="/projects/mealPrep/build">
@@ -44,4 +90,12 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    addItemstoDb: (url, data) => dispatch(addItemsToDB(url, data)),
+    getItemsFromDb: url => dispatch(getItemsFromDB(url)),
+    deleteItemsFromDb: url => dispatch(deleteItemsFromDB(url))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

@@ -11,3 +11,160 @@ export const addToCard = data => {
         item: data
     }
 }
+
+export const addItemsToDB = (url, data) => {
+
+    return (dispatch) => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json())
+            .then(addMeals => {
+                console.log(addMeals)
+                dispatch({
+                    type: "ADD_MEALS",
+                    addMeals: addMeals
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
+
+export const getItemsFromDB = url => {
+
+    return (dispatch) => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => response.json())
+            .then(getMeals => {
+                console.log(getMeals)
+                dispatch({
+                    type: "GET_MEALS",
+                    getMeals: getMeals
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
+
+export const getFiltersFromDB = url => {
+    return (dispatch) => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => response.json())
+            .then(getFilters => {
+                console.log(getFilters)
+                dispatch({
+                    type: "GET_FILTERS",
+                    getFilters: getFilters
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
+
+export const addFiltersToDB = (url, data) => {
+    return (dispatch) => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json())
+            .then(setFilters => {
+                console.log(setFilters)
+                dispatch({
+                    type: "ADD_FILTERS",
+                    setFilters: setFilters
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
+
+export const deleteItemsFromDB = url => {
+
+    return (dispatch) => {
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => response.json())
+            .then(deleteMeals => {
+                console.log(deleteMeals)
+                dispatch({
+                    type: "DELETE_MEALS",
+                    deleteMeals: deleteMeals
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
+
+export const addRangeToDB = (url, data) => {
+
+    return (dispatch) => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((response) => response.json())
+            .then(addRange => {
+                console.log(addRange)
+                dispatch({
+                    type: "ADD_RANGE",
+                    addRange: addRange
+                })
+            }
+            ).catch(error => {
+                console.log(error)
+                dispatch({
+                    type: 'ERROR',
+                    data: error
+                })
+            })
+    }
+}
