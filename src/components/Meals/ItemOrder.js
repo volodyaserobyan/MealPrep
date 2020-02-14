@@ -4,17 +4,24 @@ import TwitIcon from '../../assets/images/bx_bxl-twitter.svg'
 import CopyIcon from '../../assets/images/bx_bx-link.svg'
 import FavIcon from '../../assets/images/Fav.svg'
 import img from '../../assets/images/ImageBackg.svg'
-import ChefImg from '../../assets/images/chef.svg'
-import star from '../../assets/images/VectorStar.png'
+import Loader from 'react-loader-spinner'
+import { connect } from 'react-redux'
 import './ItemOrder.scss'
+let _ = require('lodash')
 
 class ItemOrder extends React.Component {
 
     constructor(props) {
         super(props)
 
+        console.log(props)
+        // this.props.match.params.date
+
         this.state = {
-            count: 0
+            count: 0,
+            item: {
+
+            }
         }
     }
 
@@ -31,18 +38,41 @@ class ItemOrder extends React.Component {
         }
     }
 
+    componentDidMount() {
+        if (this.props.mealsItemReducerGET != undefined) {
+            this.props.mealsItemReducerGET.meals.map((item, id) => {
+                if (item._id == this.props.match.params.id) {
+                    this.setState({
+                        item: item
+                    })
+                }
+            })
+        }
+    }
+
     render() {
+        console.log(this.state, 'state')
+        if (_.isEmpty(this.state.item)) {
+            return (
+                <Loader
+                    type="Puff"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                    timeout={3000} //3 secs
+                />
+            );
+        }
         return (
             <section className="ItemOrder">
                 <div className="ItemOrder-Cont innerWrap">
                     <div className="ItemOrder-Cont-Wrapper">
-                        <h1 className="ItemOrder-Cont-Wrapper_title">Grilled Pork Chops w/ Peach Chutney, Asparagus & Potatoes</h1>
-                        <p className="ItemOrder-Cont-Wrapper_ing">Marinated grilled pork chops w/ a ginger peach chutney, served w/ grilled asparagus,
-                         Yukon potatoes & red wine button mushrooms.</p>
+                        <h1 className="ItemOrder-Cont-Wrapper_title">{this.state.item.title}</h1>
+                        <p className="ItemOrder-Cont-Wrapper_ing">{this.state.item.desc}</p>
                         <div className="ItemOrder-Cont-Wrapper_media">
                             <div className="ItemOrder-Cont-Wrapper_media_type">
-                                <p className="ItemOrder-Cont-Wrapper_mealType">Meal Type: Breakfast, Lunch, Dinner</p>
-                                <p className="ItemOrder-Cont-Wrapper_cuisineType">Cuisine Type: American</p>
+                                {this.state.item.filterTags.selects.map((item, i) => 
+                                <div key={i} className="ItemOrder-Cont-Wrapper_mealType">{item.name}: {item.values.map((item, i) => <p key={i}>{item}</p>)}</div>)}
                             </div>
                             <div className="ItemOrder-Cont-Wrapper_media_icons">
                                 <p className="ItemOrder-Cont-Wrapper_media_icons_fb"><img src={fbIcon} />Share</p>
@@ -57,18 +87,14 @@ class ItemOrder extends React.Component {
                         <div className="ItemOrder-Cont-Wrapper_ingredients">
                             <h1 className="ItemOrder-Cont-Wrapper_ingredients_title">Ingredients</h1>
                             <p className="ItemOrder-Cont-Wrapper_ingredients_content">
-                                Red Potatoes, Green Beans, Flat Iron Steak, Carrots, Cream Sauce (Water, Half & Half (Milk, Cream), Onion,
-                                 Plain Yogurt (Cultured Non Fat Milk), Chicken Stock (Chicken Broth, Natural Flavors, Mirepoix Stock (Carrot, Onion and
-                                  Celery Juices), Gelatin, White Wine), Expeller Pressed Canola Oil, Cassava Flour, Garlic, Sea Salt, Thyme, Porcini Mushroom
-                                   Powder, Rice Flour, White Pepper), Half & Half (Milk, Cream), Butter (Pasteurized Cream, Natural Flavoring (Lactic Acid, Starter Distillate)), Water,
-                                 Sea Salt, Garlic, Oil (Expeller Pressed Canola Oil, Extra Virgin Olive Oil), Rice Flour, Green Peppercorns, Spices.
+                                {this.state.item.ingredients}
                             </p>
                         </div>
                     </div>
                     <div className="ItemOrder-Cont-Order">
                         <div className="ItemOrder-Cont-Order_count">
                             <div className="ItemOrder-Cont-Order_count_titlebl">
-                                <h1 className="ItemOrder-Cont-Order_count_titlebl_title">$26.90</h1>
+                                <h1 className="ItemOrder-Cont-Order_count_titlebl_title">{this.state.item.price}</h1>
                                 <p>. Serves: 2 </p>
                             </div>
                             <div className="ItemOrder-Cont-Order_count_btns">
@@ -82,19 +108,19 @@ class ItemOrder extends React.Component {
                         </div>
                         <div className="ItemOrder-Cont-Order_bad">
                             <div className="ItemOrder-Cont-Order_bad_cal">
-                                <h1>245</h1>
+                                <h1>{this.state.item.summary.calories}</h1>
                                 <p>Calories</p>
                             </div>
                             <div className="ItemOrder-Cont-Order_bad_fat">
-                                <h1>16g</h1>
+                                <h1>{this.state.item.summary.fat}</h1>
                                 <p>Fat</p>
                             </div>
                             <div className="ItemOrder-Cont-Order_bad_carbs">
-                                <h1>22g</h1>
+                                <h1>{this.state.item.summary.ncarbs}</h1>
                                 <p>N.Carbs</p>
                             </div>
                             <div className="ItemOrder-Cont-Order_bad_protein">
-                                <h1>34g</h1>
+                                <h1>{this.state.item.summary.protein}</h1>
                                 <p>Protein</p>
                             </div>
                         </div>
@@ -105,4 +131,16 @@ class ItemOrder extends React.Component {
     }
 }
 
-export default ItemOrder
+const mapStateToProps = state => {
+    return {
+        mealsItemReducerGET: state.mealsItemReducer.getMeals
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        // fetchItemsToCard: data => dispatch(addToCard(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemOrder)

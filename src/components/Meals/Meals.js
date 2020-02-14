@@ -3,6 +3,7 @@ import './Meals.scss'
 import OwlCarousel from 'react-owl-carousel';
 import Item from './Item'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
@@ -40,7 +41,7 @@ class Meals extends React.Component {
                         responsiveClass={true}
                         responsive={this.state.responsive}
                     >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map(id => <Item key={id} id={id} />)}
+                        {this.props.mealsItemReducerGET.meals.map((item, id) => <Item key={item._id} id={id} item={item} />)}
                     </OwlCarousel>
                     <NavLink to={{
                                     pathname: `${process.env.PUBLIC_URL}/meals`
@@ -53,4 +54,10 @@ class Meals extends React.Component {
     }
 }
 
-export default Meals
+const mapStateToProps = state => {
+    return {
+        mealsItemReducerGET: state.mealsItemReducer.getMeals
+    }
+}
+
+export default connect(mapStateToProps)(Meals)

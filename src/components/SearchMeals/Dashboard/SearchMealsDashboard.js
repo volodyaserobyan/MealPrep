@@ -1,16 +1,13 @@
 import React from 'react'
-import MealType from '../MealType/MealType'
 import Price from '../Price/Price'
-import Chef from '../Chef/Chef'
-import CuisineType from '../CuisineType/CuisineType'
-import Item from '../../Meals/Item'
+import MealsContainer from '../MealsContainer/MealsContainer'
 import Filters from '../Filters/Filters'
 import deleteIcon from '../../../assets/images/delete.svg'
 import Loader from 'react-loader-spinner'
 import SearchIcon from '../../../assets/images/SearchIcon.svg'
 import { connect } from 'react-redux'
 import './SearchMealsDashboard.scss'
-import { getFiltersFromDB, addFiltersToDB, addRangeToDB, getRangeFromDB } from '../../../action/Action'
+import { getFiltersFromDB, addFiltersToDB, addRangeToDB, getRangeFromDB, getItemsFromDB } from '../../../action/Action'
 
 let _ = require('lodash')
 
@@ -33,37 +30,14 @@ class SearchMealsDashboard extends React.Component {
         this.classNameHamburger = ""
     }
 
-    toggleChange = (obj) => {
-        this.setState(obj)
-    }
-
-    clearFilterMeal = (item) => {
-        this.setState({
-            currentDelete: item
-        })
-    }
-
-    clearPrice = () => {
-        this.setState({
-            currentDelete: 1
-        })
-    }
-
     componentDidMount() {
-        // const filterMeals = {
-        //     name: 'price',
-        //     start: 0,
-        //     end: 1000
-        // }
-        // this.props.addFiltersToFB('https://andoghevian-chef-app.herokuapp.com/filters/select', filterMeals)
         this.props.getFiltersFromDB('https://andoghevian-chef-app.herokuapp.com/filters')
-        // this.props.addRangeToDB('https://andoghevian-chef-app.herokuapp.com/filters/range', filterMeals)
-        // this.props.getRangeFromDb('https://andoghevian-chef-app.herokuapp.com/filters/range')
+        // this.props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0')
     }
 
     componentWillReceiveProps(nextProps) {
         if (!_.isEqual(this.props, nextProps)) {
-            if (!_.isEmpty(nextProps.filtersReducerGET)) {
+            if (!_.isEmpty(nextProps.filtersReducerGET) && !_.isEmpty(nextProps.mealsItemReducerGET)) {
                 this.setState({
                     getFilters: true
                 })
@@ -71,71 +45,7 @@ class SearchMealsDashboard extends React.Component {
         }
     }
 
-    clearAll = () => {
-        this.setState({
-            clearAll: 'clear'
-        })
-    }
-
-    handleClick = () => {
-        if (!this.state.isOpen) {
-            this.setState({
-                isOpen: true
-            })
-            this.classNameHamburger = "openFilter"
-        }
-        else {
-            this.setState({
-                isOpen: false
-            })
-
-            this.classNameHamburger = ""
-        }
-    }
-
     render() {
-        let mealsType = <></>
-        let cuisineType = <></>
-        let chef = <></>
-        let price = <> </>
-
-        if (!_.isEmpty(this.state.mealType)) {
-            mealsType = <div className="Filter-Result">
-                <p className="Filter-Result_content">Meal Type:</p>
-                <p className="Filter-Result_value">{this.state.mealType.map(item => (
-                    <span key={item}>{item} <img onClick={() => this.clearFilterMeal(item)} src={deleteIcon} /> </span>
-                ))}</p>
-            </div>
-        }
-        if (!_.isEmpty(this.state.cuisineType)) {
-            cuisineType = <div className="Filter-Result">
-                <p className="Filter-Result_content">Cuisine Type:</p>
-                <p className="Filter-Result_value">{this.state.cuisineType.map(item => (
-                    <span key={item}>{item} <img onClick={() => this.clearFilterMeal(item)} src={deleteIcon} /> </span>
-                ))}</p>
-            </div>
-        }
-        if (!_.isEmpty(this.state.chef)) {
-            chef = <div className="Filter-Result">
-                <p className="Filter-Result_content">Chef Type:</p>
-                <p className="Filter-Result_value">{this.state.chef.map(item => (
-                    <span key={item}>{item} <img onClick={() => this.clearFilterMeal(item)} src={deleteIcon} /> </span>
-                ))}</p>
-            </div>
-        }
-        if (!_.isEmpty(this.state.price)) {
-            price = <div className="Filter-Result">
-                <p className="Filter-Result_content">Price:</p>
-                <p className="Filter-Result_value">${this.state.price[0]}-${this.state.price[1]} <img onClick={this.clearPrice} src={deleteIcon} /></p>
-            </div>
-        }
-
-        if (this.state.currentDelete != "" || this.state.clearAll != "") {
-            this.setState({
-                currentDelete: "",
-                clearAll: ""
-            })
-        }
 
         if (!this.state.getFilters) {
             return (
@@ -170,38 +80,15 @@ class SearchMealsDashboard extends React.Component {
                             <p onClick={this.clearAll} className="SearchMealsDashboard-Cont-Filters-Heading-2"><img src={deleteIcon} /> Clear all </p>
                         </div>
                         {this.props.filtersReducerGET.filters.selects.map((item, id) =>
-                            <Filters key={id} item={item} />
+                            <Filters key={id}
+                                item={item}
+                                toggleChange={this.toggleChange}
+                                currentDelete={this.state.currentDelete}
+                                clearAll={this.state.clearAll} />
                         )}
                         {this.props.filtersReducerGET.filters.ranges.map((item, id) => <Price key={id} item={item} />)}
-                        {/* <MealType
-                            toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete}
-                            clearAll={this.state.clearAll} />
-                        <Price
-                            toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete}
-                            clearAll={this.state.clearAll} />
-                        <Chef
-                            toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete}
-                            clearAll={this.state.clearAll} />
-                        <CuisineType
-                            toggleChange={this.toggleChange}
-                            currentDelete={this.state.currentDelete}
-                            clearAll={this.state.clearAll} /> */}
                     </div>
-                    <div className="SearchMealsDashboard-Cont-Complete">
-                        {(this.state.price.length != 0 || this.state.mealType.length != 0 || this.state.chef.length != 0 || this.state.cuisineType.length != 0) ? <p>Found 49 of 307</p> : <></>}
-                        <div className="SearchMealsDashboard-Cont-Filt">
-                            {mealsType}
-                            {cuisineType}
-                            {chef}
-                            {price}
-                        </div>
-                        <div className="SearchMealsDashboard-Cont-Wrapper">
-                            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map(id => <Item key={id} id={id} />)}
-                        </div>
-                    </div>
+                    <MealsContainer mealsArr={this.props.mealsItemReducerGET.meals} />
                 </div>
             </div>
         </>
@@ -211,7 +98,8 @@ class SearchMealsDashboard extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        filtersReducerGET: state.filtersReducer.getFilters
+        filtersReducerGET: state.filtersReducer.getFilters,
+        mealsItemReducerGET: state.mealsItemReducer.getMeals
     }
 }
 
@@ -219,7 +107,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getFiltersFromDB: url => dispatch(getFiltersFromDB(url)),
         addFiltersToFB: (url, data) => dispatch(addFiltersToDB(url, data)),
-        addRangeToDB: (url, data) => dispatch(addRangeToDB(url, data))
+        addRangeToDB: (url, data) => dispatch(addRangeToDB(url, data)),
+        // getItemsFromDb: url => dispatch(getItemsFromDB(url)),
     }
 }
 

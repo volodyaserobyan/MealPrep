@@ -12,6 +12,14 @@
       flex-direction: column;
     //   max-width: 708px;
 
+    &_mealType {
+      display: flex;
+      align-items: center;
+      p {
+        margin-left: 3px;
+      }
+    }
+
       &_img {
           img {
               width: 100%;

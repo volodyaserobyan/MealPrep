@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "568bdc1d3b9ad39cfec3bcf50c7c61cf",
+    "revision": "94e196454737c933ee8dbe17b3f49e5a",
     "url": "/react/meal-prep/build/index.html"
   },
   {
-    "revision": "d207d5ef1a1a0a383d66",
+    "revision": "0585b72ef992c2a37531",
     "url": "/react/meal-prep/build/static/css/2.16aca965.chunk.css"
   },
   {
-    "revision": "3c94aba9230372ba5394",
-    "url": "/react/meal-prep/build/static/css/main.ede5be10.chunk.css"
+    "revision": "5fda764241c5b61d6d38",
+    "url": "/react/meal-prep/build/static/css/main.76ce4776.chunk.css"
   },
   {
-    "revision": "d207d5ef1a1a0a383d66",
-    "url": "/react/meal-prep/build/static/js/2.e188bd84.chunk.js"
+    "revision": "0585b72ef992c2a37531",
+    "url": "/react/meal-prep/build/static/js/2.e0af21ef.chunk.js"
   },
   {
-    "revision": "3c94aba9230372ba5394",
-    "url": "/react/meal-prep/build/static/js/main.78858b30.chunk.js"
+    "revision": "5fda764241c5b61d6d38",
+    "url": "/react/meal-prep/build/static/js/main.bfc07f38.chunk.js"
   },
   {
     "revision": "37608deb70a4e5c21b03",
@@ -282,10 +282,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "aae933277914a83d18127adf06d240af",
     "url": "/react/meal-prep/build/static/media/bx_bxl-twitter.aae93327.svg"
-  },
-  {
-    "revision": "e05c53803eec1700f606653c41d593b7",
-    "url": "/react/meal-prep/build/static/media/chef.e05c5380.svg"
   },
   {
     "revision": "dc49766665e3d22752566fc5db06fef1",

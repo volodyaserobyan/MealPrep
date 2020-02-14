@@ -14,6 +14,11 @@ const _ = require("lodash");
 
 class Item extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+    }
+
     addToCard = () => {
         const obj = {
             id: 4,
@@ -58,7 +63,7 @@ class Item extends React.Component {
         return (
             <section className="Meals-Item item">
                 <NavLink className="navLink" to={{
-                    pathname: `${process.env.PUBLIC_URL}/item/:id/${this.props.id}`
+                    pathname: `${process.env.PUBLIC_URL}/item/${this.props.item._id}`
                 }}>
                     <div className="Meals-Item_img">
                         <img className="Meals-Item_img_cover" src={img} />
@@ -66,28 +71,32 @@ class Item extends React.Component {
                     </div>
                     <div className="Meals-Item-Cont">
                         <div className="Meals-Item-Cont_title">
-                            <h1>Grilled Steak & Bacon Kale Salad</h1>
+                            <h1>{this.props.item == undefined ? 'Grilled Steak & Bacon Kale Salad' : this.props.item.title}</h1>
                             <div className="Meals-Item-Cont_title_img">
                                 <img src={IconPapper} />
                             </div>
                         </div>
-                        <p className="Meals-Item-Cont_context">Tender grilled steak over a sauteed kale, bacon & roasted sweet potato salad. Served w/ apple cider vinaigret...</p>
+                        <p className="Meals-Item-Cont_context">
+                            {this.props.item == undefined ?
+                                "Tender grilled steak over a sauteed kale, bacon & roasted sweet potato salad. Served w/ apple cider vinaigret..." :
+                                this.props.item.desc}
+                        </p>
                         <div className="Meals-Item-Cont_ingredients">
                             <div className="Meals-Item-Cont_ingredients_cal">
-                                <p className="Meals-Item-Cont_ingredients_count">245</p>
+                                <p className="Meals-Item-Cont_ingredients_count">{this.props.item == undefined ? '245' : this.props.item.summary.calories}</p>
                                 <p className="Meals-Item-Cont_ingredients_cat">Calories</p>
                             </div>
                             <div className="Meals-Item-Cont_ingredients_wrapper">
                                 <div className="Meals-Item-Cont_ingredients_fat">
-                                    <p className="Meals-Item-Cont_ingredients_count">16g</p>
+                                    <p className="Meals-Item-Cont_ingredients_count">{this.props.item == undefined ? '16' : this.props.item.summary.fat}</p>
                                     <p className="Meals-Item-Cont_ingredients_cat">Fat</p>
                                 </div>
                                 <div className="Meals-Item-Cont_ingredients_carbs">
-                                    <p className="Meals-Item-Cont_ingredients_count">22g</p>
+                                    <p className="Meals-Item-Cont_ingredients_count">{this.props.item == undefined ? '22' : this.props.item.summary.ncarbs}</p>
                                     <p className="Meals-Item-Cont_ingredients_cat">N.Carbs</p>
                                 </div>
                                 <div className="Meals-Item-Cont_ingredients_protein">
-                                    <p className="Meals-Item-Cont_ingredients_count">34g</p>
+                                    <p className="Meals-Item-Cont_ingredients_count">{this.props.item == undefined ? '65' : this.props.item.summary.protein}</p>
                                     <p className="Meals-Item-Cont_ingredients_cat">Protein</p>
                                 </div>
                             </div>
@@ -95,7 +104,7 @@ class Item extends React.Component {
                     </div>
                 </NavLink>
                 <div className="Meals-Item-Order">
-                    <p className="Meals-Item-Order_price">$14.52</p>
+                    <p className="Meals-Item-Order_price">{this.props.item == undefined ? '245' : this.props.item.price}</p>
                     <p onClick={this.addToCard} className="Meals-Item-Order_add">Add to Order</p>
                 </div>
             </section>

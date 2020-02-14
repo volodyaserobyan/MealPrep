@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PublicLayout from './components/PublicLayout/PublicLayout'
 import Dashboard from './Dashboard'
 import SearchMealsDashboard from './components/SearchMeals/Dashboard/SearchMealsDashboard'
@@ -17,11 +17,14 @@ import SelectPlans from './components/SelectPlans/SelectPlans'
 import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
+import Loader from 'react-loader-spinner'
 import { addItemsToDB, getItemsFromDB, deleteItemsFromDB } from './action/Action';
 
 const App = props => {
 
-  // useEffect(() => {
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  useEffect(() => {
     // let mealTypeArr = ['low carb', 'high carb', 'salads', 'budget friendly ooptions']
     // let cuisineTypeArr = ['American', 'British', 'Chinase', 'French', 'Italian', 'Mexican']
     // for (let i = 0; i <= 50; i++) {
@@ -60,9 +63,29 @@ const App = props => {
     //   props.addItemstoDb('https://andoghevian-chef-app.herokuapp.com/meals', item)
     // }
     // console.log(props)
-    // props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals')
+    if (props.mealsItemReducerGET == undefined) {
+      props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals')
+    }
     // props.deleteItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals/5e42a88dbfabf100177cfe8a')
-  // }, [])
+  }, [])
+
+  useEffect(() => {
+    if (props.mealsItemReducerGET != undefined) {
+      setIsSuccess(true)
+    }
+  }, [props.mealsItemReducerGET != undefined])
+
+  if (!isSuccess) {
+    return (
+      <Loader
+        type="Puff"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        timeout={3000} //3 secs
+      />
+    );
+  }
 
   return (
     <div className="App">
@@ -90,6 +113,12 @@ const App = props => {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    mealsItemReducerGET: state.mealsItemReducer.getMeals
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     addItemstoDb: (url, data) => dispatch(addItemsToDB(url, data)),
@@ -98,4 +127,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)

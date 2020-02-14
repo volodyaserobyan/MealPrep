@@ -52,8 +52,12 @@ class NavBar extends React.Component {
             <nav className="NavBar">
                 <div className="NavBar-Cont innerWrap">
                     <section className="NavBar-Cont-Menu">
-                        <div onClick={this.handleClickWelcome} className="NavBar-Cont-Menu_logoImg">
-                            <a href="/" ><img src={Logo} className="NavBar-Cont-Logo" /></a>
+                        <div className="NavBar-Cont-Menu_logoImg">
+                            <Link to={{
+                                pathname: `${process.env.PUBLIC_URL}/`
+                            }}>
+                                <img src={Logo} className="NavBar-Cont-Logo" />
+                            </Link>
                         </div>
                         <div className={`NavBar-Cont-Menu_cont ${this.classNameHamburger}`}>
                             <Link to={{
@@ -87,10 +91,10 @@ class NavBar extends React.Component {
                             <p>0</p> <p className="NavBar-Cont-Login_shop_items">Items</p>
                         </div>
                         <div className="NavBar-Cont-Login_cont">
-                        <Link to={{
+                            <Link to={{
                                 pathname: `${process.env.PUBLIC_URL}/signup`
                             }}>
-                            <button className="NavBar-Cont-Login_cont_signUp">Sign Up</button>
+                                <button className="NavBar-Cont-Login_cont_signUp">Sign Up</button>
                             </Link>
                             <Link to={{
                                 pathname: `${process.env.PUBLIC_URL}/login`
