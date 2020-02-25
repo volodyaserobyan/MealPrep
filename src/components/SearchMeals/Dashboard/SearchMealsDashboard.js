@@ -7,7 +7,7 @@ import Loader from 'react-loader-spinner'
 import SearchIcon from '../../../assets/images/SearchIcon.svg'
 import { connect } from 'react-redux'
 import './SearchMealsDashboard.scss'
-import { getFiltersFromDB, addFiltersToDB, addRangeToDB, getRangeFromDB, getItemsFromDB } from '../../../action/Action'
+import { getFiltersFromDB, addFiltersToDB, addRangeToDB, getItemsFromDB } from '../../../action/Action'
 
 let _ = require('lodash')
 
@@ -31,7 +31,14 @@ class SearchMealsDashboard extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getFiltersFromDB('https://andoghevian-chef-app.herokuapp.com/filters')
+        if (this.props.filtersReducerGET == undefined) {
+            this.props.getFiltersFromDB('https://andoghevian-chef-app.herokuapp.com/filters')
+        }
+        else {
+            this.setState({
+                getFilters: true
+            })
+        }
         // this.props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0')
     }
 
@@ -88,7 +95,7 @@ class SearchMealsDashboard extends React.Component {
                         )}
                         {this.props.filtersReducerGET.filters.ranges.map((item, id) => <Price key={id} item={item} />)}
                     </div>
-                    <MealsContainer mealsArr={this.props.mealsItemReducerGET.meals} />
+                    <MealsContainer total={this.props.mealsItemReducerTotal} meals={this.props.mealsItemReducerGET} />
                 </div>
             </div>
         </>
@@ -99,7 +106,8 @@ class SearchMealsDashboard extends React.Component {
 const mapStateToProps = state => {
     return {
         filtersReducerGET: state.filtersReducer.getFilters,
-        mealsItemReducerGET: state.mealsItemReducer.getMeals
+        mealsItemReducerGET: state.mealsItemReducer.getMeals,
+        mealsItemReducerTotal: state.mealsItemReducer.count
     }
 }
 
@@ -108,7 +116,7 @@ const mapDispatchToProps = dispatch => {
         getFiltersFromDB: url => dispatch(getFiltersFromDB(url)),
         addFiltersToFB: (url, data) => dispatch(addFiltersToDB(url, data)),
         addRangeToDB: (url, data) => dispatch(addRangeToDB(url, data)),
-        // getItemsFromDb: url => dispatch(getItemsFromDB(url)),
+        getItemsFromDb: url => dispatch(getItemsFromDB(url)),
     }
 }
 

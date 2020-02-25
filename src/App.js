@@ -8,17 +8,23 @@ import PlansComplete from './components/Plans/PlansComplete'
 import BlogComplete from './components/Blog/BlogComplete'
 import ItemOrder from './components/Meals/ItemOrder'
 import Terms from './components/Terms/Terms'
+import Verify from './components/Verify/Verify'
+import Confirm from './components/Confirm/Confirm'
 import ClientsComplete from './components/Clients/ClientsComplete'
 import Blog from './components/Blog/Blog'
 import Login from './components/Login/Login'
 import SignUp from './components/SignUp/SignUp'
 import ScrollToTop from './ScrollToTop'
 import SelectPlans from './components/SelectPlans/SelectPlans'
+import { isAuth } from './components/helpers/Utilities'
 import { connect } from 'react-redux'
+import ForgetPassword from './components/ForgetPassword/ForgetPassword'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Loader from 'react-loader-spinner'
-import { addItemsToDB, getItemsFromDB, deleteItemsFromDB } from './action/Action';
+import UserDropDown from './components/DropDowns/UserDropDown'
+import { addItemsToDB, getItemsFromDB, deleteItemsFromDB, UserInfo } from './action/Action';
+let _ = require('lodash')
 
 const App = props => {
 
@@ -63,17 +69,30 @@ const App = props => {
     //   props.addItemstoDb('https://andoghevian-chef-app.herokuapp.com/meals', item)
     // }
     // console.log(props)
-    if (props.mealsItemReducerGET == undefined) {
-      props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals')
+    if (isAuth() && _.isEmpty(props.userReducer)) {
+      props.userInfo('https://andoghevian-chef-app.herokuapp.com/users/me')
     }
+    if (props.mealsItemReducerGET.length == 0) {
+      props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0')
+    }
+
     // props.deleteItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals/5e42a88dbfabf100177cfe8a')
   }, [])
 
   useEffect(() => {
-    if (props.mealsItemReducerGET != undefined) {
+    if (props.mealsItemReducerGET.length != 0) {
+      console.log(props.mealsItemReducerGET)
       setIsSuccess(true)
     }
-  }, [props.mealsItemReducerGET != undefined])
+    if (props.signinReducerLogOut != undefined) {
+      localStorage.clear()
+    }
+
+    if (!_.isEmpty(props.userReducer)) {
+      localStorage.setItem('isPending', props.userReducer.user.pending)
+    }
+
+  }, [props.mealsItemReducerGET.length != 0, props.signinReducerLogOut != undefined, props.userReducer])
 
   if (!isSuccess) {
     return (
@@ -92,15 +111,23 @@ const App = props => {
       <BrowserRouter basename="/projects/mealPrep/build">
         <PublicLayout>
           <ScrollToTop />
+          {props.dropDownReducer &&
+            <div className='App-Drop innerWrap'>
+              <UserDropDown />
+            </div>
+          }
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
             <Route path={`${process.env.PUBLIC_URL}/meals`} component={SearchMealsDashboard} />
+            <Route path={`${process.env.PUBLIC_URL}/verify/:token`} component={Verify} />
             <Route path={`${process.env.PUBLIC_URL}/blog`} component={Blog} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/forgetpassword`} component={ForgetPassword} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
             <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />
             <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
             <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUp} />
+            <Route path={`${process.env.PUBLIC_URL}/confirm`} component={Confirm} />
             <Route path={`${process.env.PUBLIC_URL}/conditions`} component={Terms} />
             <Route path={`${process.env.PUBLIC_URL}/testimonials`} component={ClientsComplete} />
             <Route path={`${process.env.PUBLIC_URL}/item/:id/`} component={ItemOrder} />
@@ -115,7 +142,10 @@ const App = props => {
 
 const mapStateToProps = state => {
   return {
-    mealsItemReducerGET: state.mealsItemReducer.getMeals
+    mealsItemReducerGET: state.mealsItemReducer.getMeals,
+    dropDownReducer: state.dropDownReducer.isDropDown,
+    signinReducerLogOut: state.signinReducer.logOutUser,
+    userReducer: state.userReducer.userInfo
   }
 }
 
@@ -123,7 +153,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addItemstoDb: (url, data) => dispatch(addItemsToDB(url, data)),
     getItemsFromDb: url => dispatch(getItemsFromDB(url)),
-    deleteItemsFromDb: url => dispatch(deleteItemsFromDB(url))
+    deleteItemsFromDb: url => dispatch(deleteItemsFromDB(url)),
+    userInfo: url => dispatch(UserInfo(url))
   }
 }
 

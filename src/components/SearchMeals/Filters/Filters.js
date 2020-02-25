@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../../Forms/CheckBox'
-import { handlingFilters, getItemsFromDB } from '../../../action/Action'
+import { handlingFilters, getItemsFromDB, } from '../../../action/Action'
 
 // import './MealType/MealType.scss'
 
@@ -13,7 +13,7 @@ class Filters extends React.Component {
         super(props)
 
         this.state = {
-
+            checkedItems: new Map(),
         };
 
         this.sendObj = {
@@ -33,13 +33,16 @@ class Filters extends React.Component {
 
     handleChangeChk = (e) => {
         const item = e.target.name;
-        let arr = []
         const isChecked = e.target.checked;
+        this.setState(prevState => ({
+            checkedItems: prevState.checkedItems.set(item, isChecked),
+        }))
+        let arr = []
         // const info = {
         //     name: this.props.item.name,
         //     values: arr.push(item)
         // }
-        if (isChecked) {
+        // if (isChecked) {
             this.sendObj = {
                 name: this.props.item.name,
                 values: [item]
@@ -47,16 +50,14 @@ class Filters extends React.Component {
             this.props.handleFilters(this.sendObj)
             if (this.props.handleFiltersReducerHandle != undefined) {
                 setTimeout(() => {
-                    console.log(this.props.handleFiltersReducerHandle, 'sss')
                     const filt = {
                         selects: this.props.handleFiltersReducerHandle
                     }
                     const filteredByJson = JSON.stringify(filt)
-                    console.log(filteredByJson, 'filter')
                     this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0&filteredBy=${filteredByJson}`)
-                }, 1000);
+                }, 200);
             }
-        }
+        // }
         // this.setState(prevState => ({
         //     checkedItems: prevState.checkedItems.set(item, isChecked),
         // }));
@@ -69,7 +70,6 @@ class Filters extends React.Component {
         //         checkedItemsArrCuisine: [prevState.checkedItemsArrCuisine, item]
         //     }))
         // }
-        // console.log(this.state, 'state')
         // else {
         //     this.setState({
         //         checkedItemsArr: this.removeItemfromArr(item, this.state.checkedItemsArr)
@@ -88,7 +88,7 @@ class Filters extends React.Component {
                 <label key={i}>
                     <Checkbox
                         name={item}
-                        // checked={this.state.checkedItems.get(item)}
+                        // checked={this.state.checkArr.indexOf(item) != -1}
                         onChange={this.handleChangeChk}
                         value={this.state.checkedItems}
                     />
@@ -117,7 +117,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleFilters: data => dispatch(handlingFilters(data)),
-        getItemsFromDb: url => dispatch(getItemsFromDB(url)),
+        getItemsFromDb: url => dispatch(getItemsFromDB(url))
     }
 }
 

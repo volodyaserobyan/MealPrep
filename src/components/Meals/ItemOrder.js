@@ -14,9 +14,6 @@ class ItemOrder extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log(props)
-        // this.props.match.params.date
-
         this.state = {
             count: 0,
             item: {
@@ -40,7 +37,7 @@ class ItemOrder extends React.Component {
 
     componentDidMount() {
         if (this.props.mealsItemReducerGET != undefined) {
-            this.props.mealsItemReducerGET.meals.map((item, id) => {
+            this.props.mealsItemReducerGET.map((item, id) => {
                 if (item._id == this.props.match.params.id) {
                     this.setState({
                         item: item
@@ -51,7 +48,6 @@ class ItemOrder extends React.Component {
     }
 
     render() {
-        console.log(this.state, 'state')
         if (_.isEmpty(this.state.item)) {
             return (
                 <Loader

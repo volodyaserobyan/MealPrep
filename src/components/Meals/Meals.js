@@ -41,7 +41,7 @@ class Meals extends React.Component {
                         responsiveClass={true}
                         responsive={this.state.responsive}
                     >
-                        {this.props.mealsItemReducerGET.meals.map((item, id) => <Item key={item._id} id={id} item={item} />)}
+                        {this.props.mealsItemReducerGET.map((item, id) => <Item key={item._id} id={id} item={item} />)}
                     </OwlCarousel>
                     <NavLink to={{
                                     pathname: `${process.env.PUBLIC_URL}/meals`

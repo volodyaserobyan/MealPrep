@@ -41,6 +41,26 @@
       justify-content: center;
       align-items: center;
       width: 100%;
+
+      .forget {
+        font-size: 13px;
+        line-height: 20px;
+        text-decoration-line: underline;
+        color: #f58436;
+        text-align: left;
+        width: 100%;
+        margin-top: 8px;
+      }
+      > a {
+        width: 100%;
+        text-align: center;
+        > p {
+          font-size: 13px;
+          line-height: 20px;
+          text-align: center;
+          color: #c11a11;
+        }
+      }
     }
 
     &-Mail,
@@ -50,8 +70,6 @@
       box-sizing: border-box;
       border-radius: 2px;
       padding: 12px 16px;
-      font-style: normal;
-      font-weight: normal;
       font-size: 13px;
       line-height: 16px;
       color: rgba(22, 22, 22, 0.48);
@@ -144,7 +162,7 @@
     }
 
     &-Member {
-        margin-top: 24px;
+      margin-top: 24px;
       width: 100%;
       display: flex;
       justify-content: center;
@@ -160,8 +178,8 @@
       }
 
       .link {
-          color: #F58436;
-          margin-left: 4px;
+        color: #f58436;
+        margin-left: 4px;
       }
     }
   }
