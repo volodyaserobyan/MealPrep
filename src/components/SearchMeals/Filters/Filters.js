@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Checkbox from '../../Forms/CheckBox'
-import { handlingFilters, getItemsFromDB, } from '../../../action/Action'
-
-// import './MealType/MealType.scss'
+import { handlingFilters, getMealsFromDB, } from '../../../action/Action'
+import { GETMEALSURL } from '../../../const/ConstUrls'
 
 let _ = require('lodash')
 
@@ -22,41 +21,26 @@ class Filters extends React.Component {
         }
     }
 
-    // removeItemfromArr = (item, arr) => {
-    //     let newArr = [...arr]
-    //     let index = newArr.indexOf(item)
-    //     if (index !== -1) {
-    //         newArr.splice(index, 1)
-    //     }
-    //     return newArr
-    // }
-
     handleChangeChk = (e) => {
         const item = e.target.name;
         const isChecked = e.target.checked;
         this.setState(prevState => ({
             checkedItems: prevState.checkedItems.set(item, isChecked),
         }))
-        let arr = []
-        // const info = {
-        //     name: this.props.item.name,
-        //     values: arr.push(item)
-        // }
-        // if (isChecked) {
-            this.sendObj = {
-                name: this.props.item.name,
-                values: [item]
-            }
-            this.props.handleFilters(this.sendObj)
-            if (this.props.handleFiltersReducerHandle != undefined) {
-                setTimeout(() => {
-                    const filt = {
-                        selects: this.props.handleFiltersReducerHandle
-                    }
-                    const filteredByJson = JSON.stringify(filt)
-                    this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0&filteredBy=${filteredByJson}`)
-                }, 200);
-            }
+        this.sendObj = {
+            name: this.props.item.name,
+            values: [item]
+        }
+        this.props.handleFilters(this.sendObj)
+        if (this.props.handleFiltersReducerHandle != undefined) {
+            setTimeout(() => {
+                const filt = {
+                    selects: this.props.handleFiltersReducerHandle
+                }
+                const filteredByJson = JSON.stringify(filt)
+                this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0&filteredBy=${filteredByJson}`)
+            }, 200);
+        }
         // }
         // this.setState(prevState => ({
         //     checkedItems: prevState.checkedItems.set(item, isChecked),
@@ -117,7 +101,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         handleFilters: data => dispatch(handlingFilters(data)),
-        getItemsFromDb: url => dispatch(getItemsFromDB(url))
+        getMealsFromDB: url => dispatch(getMealsFromDB(url))
     }
 }
 

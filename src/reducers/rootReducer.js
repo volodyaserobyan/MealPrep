@@ -8,6 +8,7 @@ import { signupReducer } from './signupReducer'
 import { signinReducer } from './signinReducer'
 import { dropDownReducer } from './dropDownReducer'
 import { userReducer } from './userReducer'
+import { testimonialsReducer } from './testimonialsReducer'
 
 const appReducer = combineReducers({
     blogItemReducer,
@@ -18,12 +19,17 @@ const appReducer = combineReducers({
     signupReducer,
     signinReducer,
     dropDownReducer,
-    userReducer
+    userReducer,
+    testimonialsReducer
 })
 
 const rootReducer = (state, action) => {
     if (action.type === 'LOGOUT_CALL') {
         state.signinReducer = undefined;
+    }
+
+    if (action.type === 'RESET_MEALS') {
+        state.mealsItemReducer = undefined
     }
 
     return appReducer(state, action)

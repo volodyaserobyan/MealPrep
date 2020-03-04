@@ -1,7 +1,9 @@
+import { GETUSER } from '../const/ConstTypes'
+
 export const userReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case 'SUCCESS_USER': {
+        case GETUSER: {
             return {
                 ...state,
                 userInfo: action.userInfo

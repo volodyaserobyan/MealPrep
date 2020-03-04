@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import deleteIcon from '../../../assets/images/delete.svg'
 import './FilterResults.scss'
-import { removeItemFromArr, getItemsFromDB } from '../../../action/Action'
+import { removeItemFromArr, getMealsFromDB } from '../../../action/Action'
+import { GETMEALSURL } from '../../../const/ConstUrls'
 
 class FiltersResult extends React.Component {
 
@@ -14,12 +15,12 @@ class FiltersResult extends React.Component {
                     selects: this.props.handleFiltersReducerHandle
                 }
                 const filteredByJson = JSON.stringify(filt)
-                this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0&filteredBy=${filteredByJson}`)
+                this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0&filteredBy=${filteredByJson}`)
 
             }, 200);
         }
         else {
-            this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0`)
+            this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0`)
         }
     }
 
@@ -44,7 +45,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         removeItem: item => dispatch(removeItemFromArr(item)),
-        getItemsFromDb: url => dispatch(getItemsFromDB(url))
+        getMealsFromDB: url => dispatch(getMealsFromDB(url))
     }
 }
 

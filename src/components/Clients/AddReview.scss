@@ -1,0 +1,107 @@
+.AddReview {
+  background: #e5e5e5;
+  width: 100%;
+
+  &-Cont {
+    padding: 100px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    > h1 {
+      margin-bottom: 50px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 42px;
+      width: 100%;
+      max-width: 808px;
+      line-height: 48px;
+      text-align: left;
+      color: #161616;
+    }
+
+    &-Form {
+      width: 100%;
+      max-width: 808px;
+      display: flex;
+      background: #ffffff;
+
+      &-User {
+        box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+        border-radius: 4px;
+        padding: 40px;
+        flex: 2;
+
+        > div {
+          margin-top: 16px;
+        }
+
+        &:first-child {
+          margin-top: 0px;
+        }
+
+        &-Simp {
+          background: #ffffff;
+          border: 1px solid rgba(22, 22, 22, 0.22);
+          box-sizing: border-box;
+          border-radius: 2px;
+          width: 100%;
+          height: 40px;
+        }
+
+        textarea {
+          background: #ffffff;
+          border: 1px solid rgba(22, 22, 22, 0.22);
+          box-sizing: border-box;
+          border-radius: 2px;
+          max-width: 480px;
+          width: 100%;
+        }
+
+        p {
+          font-size: 13px;
+          line-height: 16px;
+          color: #161616;
+        }
+
+        &-Submit {
+          background: #9aca3c;
+          border-radius: 2px;
+          border: none;
+          padding: 12px 24px;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 16px;
+          text-align: center;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: #ffffff;
+          margin-top: 16px;
+        }
+      }
+
+      &-Rating {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.05;
+        border-radius: 0px 4px 4px 0px;
+        flex: 1;
+        flex-direction: column;
+
+        > p {
+          font-size: 13px;
+          line-height: 16px;
+          text-align: center;
+          color: #161616;
+        }
+
+        &-Star {
+          display: flex;
+        }
+      }
+    }
+  }
+}

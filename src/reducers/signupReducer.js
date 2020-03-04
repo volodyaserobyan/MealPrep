@@ -1,16 +1,24 @@
+import { SIGNUPUSER, VERIFYUSER, VERIFYREFRESH } from '../const/ConstTypes'
+
 export const signupReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case 'SIGNUP_USER': {
+        case SIGNUPUSER: {
             return {
                 ...state,
                 signupUser: action.signupUser
             }
         }
-        case 'VERIFY_USER': {
+        case VERIFYUSER: {
             return {
                 ...state,
                 verifyUser: action.verifyUser
+            }
+        }
+        case VERIFYREFRESH: {
+            return {
+                ...state,
+                refresh: action.refresh
             }
         }
         default: return state;

@@ -1,7 +1,9 @@
+import { OPENDROPDOWN } from '../const/ConstTypes'
+
 export const dropDownReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case 'OPEN_DROPDOWN': {
+        case OPENDROPDOWN: {
             return {
                 ...state,
                 isDropDown: action.isDropDown

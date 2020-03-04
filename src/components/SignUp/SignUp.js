@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUpLocal, UserInfo } from '../../action/Action'
 import { Redirect } from 'react-router-dom';
+import {
+    SIGNUPLOCALURL,
+    USERSMEURL
+} from '../../const/ConstUrls'
 import './SignUp.scss'
 
 let _ = require('lodash')
@@ -43,7 +47,7 @@ class SignUp extends React.Component {
         }
 
         if (this.state.password == this.state.confPassword) {
-            this.props.signupUserLocal('https://andoghevian-chef-app.herokuapp.com/users/local/auth/signup', sendObj)
+            this.props.signupUserLocal(SIGNUPLOCALURL, sendObj)
         } else {
             alert('not same Password and Conf Pass')
         }
@@ -56,7 +60,7 @@ class SignUp extends React.Component {
                 this.setState({
                     isSuccess: true
                 })
-                this.props.userInfo('https://andoghevian-chef-app.herokuapp.com/users/me')
+                this.props.userInfo(USERSMEURL)
             }
         }
     }

@@ -7,26 +7,36 @@ import './Item.scss'
 
 class Item extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.ratings = []
+    }
+
+    componentDidMount() {
+        this.ratings.length = 0
+    }
+
     render() {
+        console.log(this.props, 'dsdsdsdsdsds')
+        for(let i = 1; i <= this.props.item.rating; i++) {
+            this.ratings.push(i)
+        }
+        console.log(this.ratings, 'rating')
         return (
             <section className="Clients-Item">
                 <div className="Clients-Item-Cont">
-                    <p className="Clients-Item-Cont_context">“Exercitation ex nisi amet consequat minim veniam velit laborum labore ullamco laboris dolor.
-                         Fugiat incididunt irure est id aliqua duis sit consequat est. Adipisicing ullamco consequat
-                          laboris proident labore exercitation excepteur enim sint qui.”</p>
+                    <p className="Clients-Item-Cont_context">{this.props.item.text}</p>
                     <div className="Clients-Item-Cont_user">
                         <div className="Clients-Item-Cont_user_wrapper">
                             <img src={User1} />
                             <div className="Clients-Item-Cont_user_wrapper_info">
-                                <h1 className="Clients-Item-Cont_user_wrapper_info_name">Bruce Watson</h1>
+                                <h1 className="Clients-Item-Cont_user_wrapper_info_name">{this.props.item.user.name}</h1>
                                 <p className="Clients-Item-Cont_user_wrapper_info_work">Blogger</p>
                             </div>
                         </div>
                         <div className="Clients-Item-Cont_user_star">
-                            <img src={star}/>
-                            <img src={star}/>
-                            <img src={star}/>
-                            <img src={star}/>
+                            {this.ratings.map(item => <img src={star} alt='' key={item} />)}
                         </div>
                     </div>
                 </div>

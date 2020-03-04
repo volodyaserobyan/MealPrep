@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { signInCall, UserInfo } from '../../action/Action'
 import { Redirect } from 'react-router-dom';
+import {
+    LOGINLOCALURL,
+    GETMEALSURL
+} from '../../const/ConstUrls'
 import './Login.scss'
 
 let _ = require('lodash')
@@ -39,7 +43,7 @@ class Login extends React.Component {
             password: this.state.password
         }
 
-        this.props.signInLocal('https://andoghevian-chef-app.herokuapp.com/users/local/auth/login', sendObj)
+        this.props.signInLocal(LOGINLOCALURL, sendObj)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -50,7 +54,7 @@ class Login extends React.Component {
                     this.setState({
                         isSuccess: true
                     })
-                    this.props.userInfo('https://andoghevian-chef-app.herokuapp.com/users/me')
+                    this.props.userInfo(GETMEALSURL)
                 }
                 else {
                     this.setState({

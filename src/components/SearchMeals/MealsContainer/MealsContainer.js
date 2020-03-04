@@ -3,9 +3,9 @@ import Item from '../../Meals/Item'
 import { connect } from 'react-redux'
 import FiltersResult from '../FiltersResult/FiltersResult'
 import './MealsContainer.scss'
-import { getItemsFromDB } from '../../../action/Action'
-import InfiniteScroll from 'react-infinite-scroller';
-import Pagination from "react-js-pagination";
+import { getMealsFromDB } from '../../../action/Action'
+import InfiniteScroll from 'react-infinite-scroller'
+import { GETMEALSURL } from '../../../const/ConstUrls'
 let _ = require('lodash')
 
 class MealsContainer extends React.Component {
@@ -25,18 +25,21 @@ class MealsContainer extends React.Component {
         this.x = this.x + 1
         if (this.props.handleFiltersReducerHandle.length != 0) {
             setTimeout(() => {
-                if (this.x <= this.props.total) {
-                    const filt = {
-                        selects: this.props.handleFiltersReducerHandle
-                    }
-                    const filteredByJson = JSON.stringify(filt)
-                    this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=${this.x * 9}&filteredBy=${filteredByJson}`)
+                const filt = {
+                    selects: this.props.handleFiltersReducerHandle
+                }
+                const filteredByJson = JSON.stringify(filt)
+                if (this.x * 9 <= this.props.total) {
+                    this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=${this.x * 9}&filteredBy=${filteredByJson}`)
+                }
+                else {
+                    this.props.getMealsFromDB(`${GETMEALSURL}&filteredBy=${filteredByJson}`)
                 }
             }, 200);
         }
         else {
             if (this.x <= this.props.total) {
-                this.props.getItemsFromDb(`https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=${this.x * 9}`)
+                this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=${this.x * 9}`)
             }
         }
     }
@@ -60,7 +63,7 @@ class MealsContainer extends React.Component {
                     <InfiniteScroll
                         pageStart={0}
                         loadMore={this.handlePageChangePagination}
-                        hasMore={this.state.meals.length <= this.props.total}
+                        hasMore={this.state.meals.length < this.props.total}
                         loader={<div className="loader" key={0}>Loading ...</div>}
                     >
                         {this.state.meals.map((item, id) => <Item key={item._id}
@@ -81,7 +84,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getItemsFromDb: url => dispatch(getItemsFromDB(url)),
+        getMealsFromDB: url => dispatch(getMealsFromDB(url)),
     }
 }
 

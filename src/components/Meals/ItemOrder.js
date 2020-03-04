@@ -133,10 +133,4 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        // fetchItemsToCard: data => dispatch(addToCard(data))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ItemOrder)
+export default connect(mapStateToProps)(ItemOrder)

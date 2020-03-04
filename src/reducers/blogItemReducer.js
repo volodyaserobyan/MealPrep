@@ -1,7 +1,9 @@
+import { BLOGITEMS } from '../const/ConstTypes'
+
 export const blogItemReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case 'BLOG_ITEMS':
+        case BLOGITEMS:
             return {
                 ...state,
                 blog: action.blog

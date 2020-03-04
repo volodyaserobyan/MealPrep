@@ -1,13 +1,15 @@
+import { SIGNINUSER, LOGOUTCALL } from '../const/ConstTypes'
+
 export const signinReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case 'SIGNIN_USER': {
+        case SIGNINUSER: {
             return {
                 ...state,
                 signinUser: action.signinUser
             }
         }
-        case 'LOGOUT_CALL': {
+        case LOGOUTCALL: {
             return {
                 ...state,
                 logOutUser: action.logOutUser

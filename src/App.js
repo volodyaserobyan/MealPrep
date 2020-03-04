@@ -8,6 +8,7 @@ import PlansComplete from './components/Plans/PlansComplete'
 import BlogComplete from './components/Blog/BlogComplete'
 import ItemOrder from './components/Meals/ItemOrder'
 import Terms from './components/Terms/Terms'
+import AddReview from './components/Clients/AddReview'
 import Verify from './components/Verify/Verify'
 import Confirm from './components/Confirm/Confirm'
 import ClientsComplete from './components/Clients/ClientsComplete'
@@ -23,7 +24,16 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Loader from 'react-loader-spinner'
 import UserDropDown from './components/DropDowns/UserDropDown'
-import { addItemsToDB, getItemsFromDB, deleteItemsFromDB, UserInfo } from './action/Action';
+import {
+  getMealsFromDB,
+  UserInfo,
+  getTestimonials
+} from './action/Action';
+import {
+  USERSMEURL,
+  GETMEALSURL,
+  TESTIMONIALSURL
+} from './const/ConstUrls'
 let _ = require('lodash')
 
 const App = props => {
@@ -31,68 +41,38 @@ const App = props => {
   const [isSuccess, setIsSuccess] = useState(false)
 
   useEffect(() => {
-    // let mealTypeArr = ['low carb', 'high carb', 'salads', 'budget friendly ooptions']
-    // let cuisineTypeArr = ['American', 'British', 'Chinase', 'French', 'Italian', 'Mexican']
-    // for (let i = 0; i <= 50; i++) {
-    //   const item = {
-    //     title: `food${i}`,
-    //     desc: `food${i} desc`,
-    //     servies: i,
-    //     price: i * 10,
-    //     ingredients: 'dsfd,sbfkhdsfbkldsfbsdjhk',
-    //     summary: {
-    //       ncarbs: i,
-    //       "test summary": "fgdgf",
-    //       calories: i + 2,
-    //       fat: i + 3,
-    //       protein: i + 12
-    //     },
-    //     filterTags: {
-    //       selects: [
-    //         {
-    //           name: "meal type",
-    //           values: [mealTypeArr[Math.floor(Math.random() * mealTypeArr.length)]]
-    //         },
-    //         {
-    //           name: 'cuisine type',
-    //           values: [cuisineTypeArr[Math.floor(Math.random() * cuisineTypeArr.length)]]
-    //         }
-    //       ],
-    //       ranges: [
-    //         {
-    //           name: 'price',
-    //           value: i * 15
-    //         }
-    //       ]
-    //     }
-    //   }
-    //   props.addItemstoDb('https://andoghevian-chef-app.herokuapp.com/meals', item)
-    // }
-    // console.log(props)
     if (isAuth() && _.isEmpty(props.userReducer)) {
-      props.userInfo('https://andoghevian-chef-app.herokuapp.com/users/me')
+      props.userInfo(USERSMEURL)
     }
-    if (props.mealsItemReducerGET.length == 0) {
-      props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0')
+    if (props.mealsItemReducerMessage !== 'meals successfully retrived from db') {
+      props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0`)
     }
-
-    // props.deleteItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals/5e42a88dbfabf100177cfe8a')
+    if (props.testimonialsReducerMessage !== 'testimonials successfully retrived from db') {
+      props.getTestimonial(`${TESTIMONIALSURL}?limit=6&offset=0`)
+    }
   }, [])
 
   useEffect(() => {
-    if (props.mealsItemReducerGET.length != 0) {
-      console.log(props.mealsItemReducerGET)
+    if (props.mealsItemReducerMessage === 'meals successfully retrived from db' &&
+      props.testimonialsReducerMessage === 'testimonials successfully retrived from db') {
       setIsSuccess(true)
     }
     if (props.signinReducerLogOut != undefined) {
       localStorage.clear()
     }
 
-    if (!_.isEmpty(props.userReducer)) {
-      localStorage.setItem('isPending', props.userReducer.user.pending)
+    if (!_.isEmpty(props.userReducer) && props.userReducer.user.local.pending == true) {
+      localStorage.setItem('isPending', props.userReducer.user.local.pending)
+    }
+    else {
+      localStorage.setItem('isPending', false)
     }
 
-  }, [props.mealsItemReducerGET.length != 0, props.signinReducerLogOut != undefined, props.userReducer])
+  }, [props.mealsItemReducerMessage,
+  props.signinReducerLogOut,
+  props.userReducer,
+  props.testimonialsReducerMessage
+  ])
 
   if (!isSuccess) {
     return (
@@ -101,7 +81,7 @@ const App = props => {
         color="#00BFFF"
         height={100}
         width={100}
-        timeout={3000} //3 secs
+        timeout={3000}
       />
     );
   }
@@ -123,6 +103,7 @@ const App = props => {
             <Route path={`${process.env.PUBLIC_URL}/blog`} component={Blog} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
             <Route path={`${process.env.PUBLIC_URL}/forgetpassword`} component={ForgetPassword} />
+            <Route path={`${process.env.PUBLIC_URL}/addreview`} component={AddReview} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
             <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />
             <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
@@ -142,19 +123,20 @@ const App = props => {
 
 const mapStateToProps = state => {
   return {
+    mealsItemReducerMessage: state.mealsItemReducer.message,
     mealsItemReducerGET: state.mealsItemReducer.getMeals,
+    testimonialsReducerMessage: state.testimonialsReducer.message,
     dropDownReducer: state.dropDownReducer.isDropDown,
     signinReducerLogOut: state.signinReducer.logOutUser,
-    userReducer: state.userReducer.userInfo
+    userReducer: state.userReducer.userInfo,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addItemstoDb: (url, data) => dispatch(addItemsToDB(url, data)),
-    getItemsFromDb: url => dispatch(getItemsFromDB(url)),
-    deleteItemsFromDb: url => dispatch(deleteItemsFromDB(url)),
-    userInfo: url => dispatch(UserInfo(url))
+    getMealsFromDB: url => dispatch(getMealsFromDB(url)),
+    userInfo: url => dispatch(UserInfo(url)),
+    getTestimonial: url => dispatch(getTestimonials(url))
   }
 }
 

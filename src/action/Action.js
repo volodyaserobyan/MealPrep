@@ -1,64 +1,41 @@
+import * as All from '../const/ConstTypes'
+
 export const blogItems = data => {
     return {
-        type: 'BLOG_ITEMS',
+        type: All.BLOGITEMS,
         blog: data
     }
 }
 
 export const addToCard = data => {
     return {
-        type: 'ADD_TO_CARD',
+        type: All.ADDTOCARD,
         item: data
     }
 }
 
 export const handlingFilters = data => {
     return {
-        type: 'HANDLING_FILTERS',
+        type: All.HANDLINGFILTERS,
         filtersHandle: data
     }
 }
 
 export const removeItemFromArr = item => {
     return {
-        type: 'REMOVE_ITEM',
+        type: All.REMOVEITEMARR,
         item: item
     }
 }
 
 export const openDropDown = bool => {
     return {
-        type: 'OPEN_DROPDOWN',
+        type: All.OPENDROPDOWN,
         isDropDown: bool
     }
 }
 
-export const addItemsToDB = (url, data) => {
-
-    return (dispatch) => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((response) => response.json())
-            .then(addMeals => {
-                dispatch({
-                    type: "ADD_MEALS",
-                    addMeals: addMeals
-                })
-            }
-            ).catch(error => {
-                dispatch({
-                    type: 'ERROR',
-                    data: error
-                })
-            })
-    }
-}
-
-export const getItemsFromDB = url => {
+export const getMealsFromDB = url => {
 
     return (dispatch) => {
         fetch(url, {
@@ -68,25 +45,30 @@ export const getItemsFromDB = url => {
             }
         }).then((response) => response.json())
             .then(getMeals => {
-                console.log(getMeals, 'meals action')
                 if (url.includes('filteredBy')) {
                     dispatch({
-                        type: "GET_MEALS_FILTER",
+                        type: All.GETMEALSFILTER,
                         getMeals: getMeals
                     })
                 } else {
                     dispatch({
-                        type: "GET_MEALS",
+                        type: All.GETMEALS,
                         getMeals: getMeals
                     })
                 }
             }
             ).catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
+    }
+}
+
+export const resetMeals = () => {
+    return {
+        type: All.RESETMEALS
     }
 }
 
@@ -100,86 +82,13 @@ export const getFiltersFromDB = url => {
         }).then((response) => response.json())
             .then(getFilters => {
                 dispatch({
-                    type: "GET_FILTERS",
+                    type: All.GETFILTERS,
                     getFilters: getFilters
                 })
             }
             ).catch(error => {
                 dispatch({
-                    type: 'ERROR',
-                    data: error
-                })
-            })
-    }
-}
-
-export const addFiltersToDB = (url, data) => {
-    return (dispatch) => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((response) => response.json())
-            .then(setFilters => {
-                dispatch({
-                    type: "ADD_FILTERS",
-                    setFilters: setFilters
-                })
-            }
-            ).catch(error => {
-                dispatch({
-                    type: 'ERROR',
-                    data: error
-                })
-            })
-    }
-}
-
-export const deleteItemsFromDB = url => {
-
-    return (dispatch) => {
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then((response) => response.json())
-            .then(deleteMeals => {
-                dispatch({
-                    type: "DELETE_MEALS",
-                    deleteMeals: deleteMeals
-                })
-            }
-            ).catch(error => {
-                dispatch({
-                    type: 'ERROR',
-                    data: error
-                })
-            })
-    }
-}
-
-export const addRangeToDB = (url, data) => {
-
-    return dispatch => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then(response => response.json())
-            .then(addRange => {
-                dispatch({
-                    type: "ADD_RANGE",
-                    addRange: addRange
-                })
-            }
-            ).catch(error => {
-                dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
@@ -198,13 +107,13 @@ export const signUpLocal = (url, data) => {
         }).then(response => response.json())
             .then(signupUser => {
                 dispatch({
-                    type: 'SIGNUP_USER',
+                    type: All.SIGNUPUSER,
                     signupUser: signupUser
                 })
             })
             .catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
@@ -223,13 +132,13 @@ export const signInCall = (url, data) => {
         }).then(response => response.json())
             .then(signinUser => {
                 dispatch({
-                    type: 'SIGNIN_USER',
+                    type: All.SIGNINUSER,
                     signinUser: signinUser
                 })
             })
             .catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
@@ -248,13 +157,13 @@ export const verifyCall = (url, token) => {
         }).then(response => response.json())
             .then(verifyUser => {
                 dispatch({
-                    type: 'VERIFY_USER',
+                    type: All.VERIFYUSER,
                     verifyUser: verifyUser
                 })
             })
             .catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
@@ -272,13 +181,13 @@ export const UserInfo = url => {
         }).then(response => response.json())
             .then(userInfo => {
                 dispatch({
-                    type: 'SUCCESS_USER',
+                    type: All.GETUSER,
                     userInfo: userInfo
                 })
             })
             .catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
                     data: error
                 })
             })
@@ -296,13 +205,60 @@ export const SignOutCall = url => {
         }).then(response => response.json())
             .then(logOutUser => {
                 dispatch({
-                    type: 'LOGOUT_CALL',
+                    type: All.LOGOUTCALL,
                     logOutUser: logOutUser
                 })
             })
             .catch(error => {
                 dispatch({
-                    type: 'ERROR',
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const refreshVerification = url => {
+    return dispatch => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+            },
+        }).then(response => response.json())
+            .then(refresh => {
+                dispatch({
+                    type: All.VERIFYREFRESH,
+                    refresh: refresh
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const getTestimonials = url => {
+    return dispatch => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(response => response.json())
+            .then(testimonial => {
+                dispatch({
+                    type: All.GETTESTIMONIALS,
+                    testimonial: testimonial
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
                     data: error
                 })
             })

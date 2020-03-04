@@ -1,8 +1,7 @@
 import React from 'react'
 import Item from './Item'
 import OwlCarousel from 'react-owl-carousel';
-import rightArrow from '../../assets/images/VectorWhite.svg'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './Clients.scss'
 
 class Clients extends React.Component {
@@ -23,14 +22,12 @@ class Clients extends React.Component {
     }
 
     render() {
+        console.log(this.props.testimonialsReducerGET, 'gfhgfhgf')
         return (
             <section className="Clients">
                 <div className="Clients-Cont innerWrap">
                     <div className="Clients-Cont-Title">
                         <h1>What our clients say</h1>
-                        {/* <Link to={{
-                            pathname: `${process.env.PUBLIC_URL}/testimonials`
-                        }}><div><p className="Clients-Cont-Title_view">View all Plans</p> <img src={rightArrow} /></div></Link> */}
                     </div>
                     <div className="Clients-Cont-Item">
                         <OwlCarousel
@@ -41,7 +38,9 @@ class Clients extends React.Component {
                             responsiveClass={true}
                             responsive={this.state.responsive}
                         >
-                            {[1, 2, 3, 4, 5].map(id => <Item key={id} />)}
+                            {this.props.testimonialsReducerGET.length !== 0 &&
+                                this.props.testimonialsReducerGET[0] !== undefined
+                                && this.props.testimonialsReducerGET.map(item => <Item key={item._id} item={item} />)}
                         </OwlCarousel>
                     </div>
                 </div>
@@ -50,4 +49,10 @@ class Clients extends React.Component {
     }
 }
 
-export default Clients
+const mapStateToProps = state => {
+    return {
+        testimonialsReducerGET: state.testimonialsReducer.getTestimonials
+    }
+}
+
+export default connect(mapStateToProps)(Clients)

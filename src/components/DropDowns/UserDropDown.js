@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { SignOutCall } from '../../action/Action'
 import { Redirect } from 'react-router-dom'
+import { LOGOUTLOCALURL } from '../../const/ConstUrls'
 import './UserDropDown.scss'
 let _ = require('lodash')
 
@@ -16,7 +17,7 @@ class UserDropDown extends React.Component {
     }
 
     signOut = () => {
-        this.props.signOutLocal('https://andoghevian-chef-app.herokuapp.com/users/local/auth/logout')
+        this.props.signOutLocal(LOGOUTLOCALURL)
     }
 
     componentWillReceiveProps(nextProps) {

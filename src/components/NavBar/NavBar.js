@@ -69,12 +69,6 @@ class NavBar extends React.Component {
                     <div className="Attention">
                         <p>Attention, you have not confirmed email. Please confirm your email. Confirm now</p>
                     </div>}
-                {/* {(this.props.userReducer != undefined ? (this.props.userReducer.user.pending && <div className="Attention">
-                    <p>Attention, you have not confirmed email. Please confirm your email. Confirm now</p>
-                </div>) : (isAuth() && !isVerified())) &&
-                    <div className="Attention">
-                        <p>Attention, you have not confirmed email. Please confirm your email. Confirm now</p>
-                    </div>} */}
                 <div className="NavBar-Cont innerWrap">
                     <section className="NavBar-Cont-Menu">
                         <div className="NavBar-Cont-Menu_logoImg">

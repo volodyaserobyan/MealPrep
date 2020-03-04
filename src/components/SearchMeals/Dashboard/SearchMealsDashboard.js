@@ -7,7 +7,15 @@ import Loader from 'react-loader-spinner'
 import SearchIcon from '../../../assets/images/SearchIcon.svg'
 import { connect } from 'react-redux'
 import './SearchMealsDashboard.scss'
-import { getFiltersFromDB, addFiltersToDB, addRangeToDB, getItemsFromDB } from '../../../action/Action'
+import {
+    getFiltersFromDB,
+    getMealsFromDB,
+    resetMeals
+} from '../../../action/Action'
+import {
+    FILTERSURL,
+    GETMEALSURL
+} from '../../../const/ConstUrls'
 
 let _ = require('lodash')
 
@@ -32,14 +40,16 @@ class SearchMealsDashboard extends React.Component {
 
     componentDidMount() {
         if (this.props.filtersReducerGET == undefined) {
-            this.props.getFiltersFromDB('https://andoghevian-chef-app.herokuapp.com/filters')
+            this.props.getFiltersFromDB(FILTERSURL)
         }
         else {
             this.setState({
                 getFilters: true
             })
         }
-        // this.props.getItemsFromDb('https://andoghevian-chef-app.herokuapp.com/meals?limit=9&offset=0')
+        if (_.isEmpty(this.props.mealsItemReducerGET)) {
+            this.props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0`)
+        }
     }
 
     componentWillReceiveProps(nextProps) {
@@ -50,6 +60,10 @@ class SearchMealsDashboard extends React.Component {
                 })
             }
         }
+    }
+
+    componentWillUnmount() {
+        this.props.resetMealsAll()
     }
 
     render() {
@@ -95,7 +109,8 @@ class SearchMealsDashboard extends React.Component {
                         )}
                         {this.props.filtersReducerGET.filters.ranges.map((item, id) => <Price key={id} item={item} />)}
                     </div>
-                    <MealsContainer total={this.props.mealsItemReducerTotal} meals={this.props.mealsItemReducerGET} />
+                    <MealsContainer total={this.props.mealsItemReducerTotal} meals={_.isEmpty(this.props.mealsItemRedfucerFilter) ?
+                        this.props.mealsItemReducerGET : this.props.mealsItemRedfucerFilter} />
                 </div>
             </div>
         </>
@@ -107,6 +122,7 @@ const mapStateToProps = state => {
     return {
         filtersReducerGET: state.filtersReducer.getFilters,
         mealsItemReducerGET: state.mealsItemReducer.getMeals,
+        mealsItemRedfucerFilter: state.mealsItemReducer.getMealsFilter,
         mealsItemReducerTotal: state.mealsItemReducer.count
     }
 }
@@ -114,9 +130,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getFiltersFromDB: url => dispatch(getFiltersFromDB(url)),
-        addFiltersToFB: (url, data) => dispatch(addFiltersToDB(url, data)),
-        addRangeToDB: (url, data) => dispatch(addRangeToDB(url, data)),
-        getItemsFromDb: url => dispatch(getItemsFromDB(url)),
+        getMealsFromDB: url => dispatch(getMealsFromDB(url)),
+        resetMealsAll: () => dispatch(resetMeals())
     }
 }
 

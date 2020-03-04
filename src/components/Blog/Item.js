@@ -11,9 +11,8 @@ import ImgBlog8 from '../../assets/images/ImgBlog(8).svg'
 import messageItem from '../../assets/images/VectorMessage.svg'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
-
-import './Item.scss'
 import { blogItems } from '../../action/Action'
+import './Item.scss'
 
 class Item extends React.Component {
 
