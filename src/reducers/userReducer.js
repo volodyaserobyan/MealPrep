@@ -1,4 +1,4 @@
-import { GETUSER } from '../const/ConstTypes'
+import { GETUSER, DELETEUSER } from '../const/ConstTypes'
 
 export const userReducer = (state = {}, action) => {
 
@@ -7,6 +7,12 @@ export const userReducer = (state = {}, action) => {
             return {
                 ...state,
                 userInfo: action.userInfo
+            }
+        }
+        case DELETEUSER: {
+            return {
+                ...state,
+                deleteUser: action.deleteUser
             }
         }
         default: return state;

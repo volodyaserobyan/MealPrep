@@ -1,3 +1,4 @@
+import { LOGOUTCALL, RESETMEALS, DELETEUSER } from '../const/ConstTypes'
 import { combineReducers } from 'redux'
 import { blogItemReducer } from './blogItemReducer'
 import { addToCardReducer } from './addToCardReducer'
@@ -9,6 +10,7 @@ import { signinReducer } from './signinReducer'
 import { dropDownReducer } from './dropDownReducer'
 import { userReducer } from './userReducer'
 import { testimonialsReducer } from './testimonialsReducer'
+import { passwordReducer } from './passwordReducer'
 
 const appReducer = combineReducers({
     blogItemReducer,
@@ -20,16 +22,21 @@ const appReducer = combineReducers({
     signinReducer,
     dropDownReducer,
     userReducer,
-    testimonialsReducer
+    testimonialsReducer,
+    passwordReducer
 })
 
 const rootReducer = (state, action) => {
-    if (action.type === 'LOGOUT_CALL') {
+    if (action.type === LOGOUTCALL) {
         state.signinReducer = undefined;
     }
 
-    if (action.type === 'RESET_MEALS') {
+    if (action.type === RESETMEALS) {
         state.mealsItemReducer = undefined
+    }
+
+    if (action.type === DELETEUSER) {
+        state.userReducer.userInfo = undefined
     }
 
     return appReducer(state, action)

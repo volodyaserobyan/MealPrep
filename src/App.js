@@ -20,13 +20,15 @@ import SelectPlans from './components/SelectPlans/SelectPlans'
 import { isAuth } from './components/helpers/Utilities'
 import { connect } from 'react-redux'
 import ForgetPassword from './components/ForgetPassword/ForgetPassword'
+import ChangePassword from './components/ChangePassword/ChangePassword'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Loader from 'react-loader-spinner'
 import UserDropDown from './components/DropDowns/UserDropDown'
+import MyAccount from './components/MyAccount/MyAccount'
 import {
   getMealsFromDB,
-  UserInfo,
+  userInfo,
   getTestimonials
 } from './action/Action';
 import {
@@ -42,7 +44,7 @@ const App = props => {
 
   useEffect(() => {
     if (isAuth() && _.isEmpty(props.userReducer)) {
-      props.userInfo(USERSMEURL)
+      props.infoUser(USERSMEURL)
     }
     if (props.mealsItemReducerMessage !== 'meals successfully retrived from db') {
       props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0`)
@@ -61,11 +63,14 @@ const App = props => {
       localStorage.clear()
     }
 
-    if (!_.isEmpty(props.userReducer) && props.userReducer.user.local.pending == true) {
-      localStorage.setItem('isPending', props.userReducer.user.local.pending)
-    }
-    else {
-      localStorage.setItem('isPending', false)
+    if (!_.isEmpty(props.userReducer)) {
+      localStorage.setItem('userName', props.userReducer.user.local.name)
+      if (props.userReducer.user.local.pending == true) {
+        localStorage.setItem('isPending', props.userReducer.user.local.pending)
+      }
+      else {
+        localStorage.setItem('isPending', false)
+      }
     }
 
   }, [props.mealsItemReducerMessage,
@@ -102,7 +107,9 @@ const App = props => {
             <Route path={`${process.env.PUBLIC_URL}/verify/:token`} component={Verify} />
             <Route path={`${process.env.PUBLIC_URL}/blog`} component={Blog} />
             <Route path={`${process.env.PUBLIC_URL}/about`} component={About} />
+            <Route path={`${process.env.PUBLIC_URL}/myaccount`} component={MyAccount} />
             <Route path={`${process.env.PUBLIC_URL}/forgetpassword`} component={ForgetPassword} />
+            <Route path={`${process.env.PUBLIC_URL}/password/forget/:token`} component={ChangePassword} />
             <Route path={`${process.env.PUBLIC_URL}/addreview`} component={AddReview} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
             <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />
@@ -135,7 +142,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getMealsFromDB: url => dispatch(getMealsFromDB(url)),
-    userInfo: url => dispatch(UserInfo(url)),
+    infoUser: url => dispatch(userInfo(url)),
     getTestimonial: url => dispatch(getTestimonials(url))
   }
 }

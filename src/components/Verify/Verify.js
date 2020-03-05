@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { verifyCall, UserInfo, refreshVerification } from '../../action/Action'
+import { verifyCall, userInfo, refreshVerification } from '../../action/Action'
 import mailIcon from '../../assets/images/mail.png'
 import {
     VERIFYURL,
@@ -38,7 +38,7 @@ class Verify extends React.Component {
                 this.setState({
                     isSuccess: true
                 })
-                this.props.userInfo(USERSMEURL)
+                this.props.infoUser(USERSMEURL)
             }
         }
     }
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => {
     return {
         verifyUser: (url, token) => dispatch(verifyCall(url, token)),
         refreshVerify: url => dispatch(refreshVerification(url)),
-        userInfo: url => dispatch(UserInfo(url))
+        infoUser: url => dispatch(userInfo(url))
     }
 }
 

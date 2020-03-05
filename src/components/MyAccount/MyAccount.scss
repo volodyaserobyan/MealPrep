@@ -1,0 +1,122 @@
+.MyAccount {
+  width: 100%;
+  height: calc(100vh - 316px);
+  padding: 0 16px;
+  min-height: 660px;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-Cont {
+    max-width: 600px;
+    width: 100%;
+
+    > p {
+      text-align: center;
+      font-size: 13px;
+      line-height: 20px;
+      text-align: center;
+      text-decoration-line: underline;
+      color: #cd4940;
+      margin-top: 40px;
+    }
+
+    &-Title {
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        font-weight: bold;
+        font-size: 42px;
+        line-height: 48px;
+        color: #161616;
+      }
+
+      > div {
+        display: flex;
+        align-items: center;
+
+        img {
+          height: 16px;
+        }
+      }
+    }
+
+    &-Context {
+      background-color: #fff;
+      box-shadow: 0px 8px 32px rgba(22, 22, 22, 0.05);
+      border-radius: 4px;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      align-items: center;
+
+      &-User {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        > img {
+          margin-bottom: 20px;
+        }
+
+        > p {
+          background: rgba(245, 132, 54, 0.08);
+          border-radius: 4px;
+          padding: 6px 8px;
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 16px;
+          text-align: center;
+          color: #f58436;
+          align-self: center;
+          margin: 0px 0px;
+        }
+      }
+
+      &-Info {
+        flex: 2;
+        > div {
+          display: flex;
+          margin-top: 14px;
+          > p {
+            font-size: 13px;
+            line-height: 20px;
+            color: rgba(22, 22, 22, 0.74);
+          }
+
+          > h1 {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 20px;
+            color: #161616;
+            margin-left: 30px;
+
+            &:nth-last-child() {
+              margin-left: 40px;
+            }
+          }
+        }
+
+        &-Edit {
+          display: flex;
+          > p {
+            font-size: 13px;
+            line-height: 20px;
+            text-decoration-line: underline;
+            color: #f58436 !important;
+            margin-left: 16px;
+
+            &:first-child {
+              margin-left: 0px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

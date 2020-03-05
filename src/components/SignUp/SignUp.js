@@ -3,7 +3,7 @@ import fbIcon from '../../assets/images/bx_bxl-facebook-square.svg'
 import googleIcon from '../../assets/images/VectorGoogle.svg'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { signUpLocal, UserInfo } from '../../action/Action'
+import { signUpLocal, userInfo } from '../../action/Action'
 import { Redirect } from 'react-router-dom';
 import {
     SIGNUPLOCALURL,
@@ -60,7 +60,7 @@ class SignUp extends React.Component {
                 this.setState({
                     isSuccess: true
                 })
-                this.props.userInfo(USERSMEURL)
+                this.props.infoUser(USERSMEURL)
             }
         }
     }
@@ -116,7 +116,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         signupUserLocal: (url, data) => dispatch(signUpLocal(url, data)),
-        userInfo: url => dispatch(UserInfo(url))
+        infoUser: url => dispatch(userInfo(url))
     }
 }
 

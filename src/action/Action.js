@@ -170,7 +170,7 @@ export const verifyCall = (url, token) => {
     }
 }
 
-export const UserInfo = url => {
+export const userInfo = url => {
     return dispatch => {
         fetch(url, {
             method: 'GET',
@@ -242,6 +242,54 @@ export const refreshVerification = url => {
     }
 }
 
+export const forgetPassword = (url, email) => {
+    return dispatch => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(email)
+        }).then(response => response.json())
+            .then(forgetPassword => {
+                dispatch({
+                    type: All.FORGETPASSWORD,
+                    forgetPassword: forgetPassword
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const changePassword = (url, obj) => {
+    return dispatch => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(obj)
+        }).then(response => response.json())
+            .then(changePassword => {
+                dispatch({
+                    type: All.CHANGEPASSWORD,
+                    changePassword: changePassword
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
 export const getTestimonials = url => {
     return dispatch => {
         fetch(url, {
@@ -254,6 +302,55 @@ export const getTestimonials = url => {
                 dispatch({
                     type: All.GETTESTIMONIALS,
                     testimonial: testimonial
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const deleteUser = url => {
+    return dispatch => {
+        fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+            },
+        }).then(response => response.json())
+            .then(deleteUSer => {
+                dispatch({
+                    type: All.DELETEUSER,
+                    deleteUSer: deleteUSer
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const postTestimonials = (url, info) => {
+    return dispatch => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": localStorage.getItem('token')
+            },
+            body: JSON.stringify(info)
+        }).then(response => response.json())
+            .then(testimonial => {
+                dispatch({
+                    type: All.POSTTESTIMONIALS,
+                    testimonialPost: testimonial
                 })
             })
             .catch(error => {

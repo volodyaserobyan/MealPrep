@@ -86,7 +86,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 0.05;
+        // opacity: 0.05;
         border-radius: 0px 4px 4px 0px;
         flex: 1;
         flex-direction: column;
@@ -99,7 +99,17 @@
         }
 
         &-Star {
+          margin-top: 22px;
           display: flex;
+        }
+
+        > h1 {
+          margin-top: 16px;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 24px;
+          text-align: center;
+          color: #f58436;
         }
       }
     }

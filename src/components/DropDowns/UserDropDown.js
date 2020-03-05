@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { SignOutCall } from '../../action/Action'
 import { Redirect } from 'react-router-dom'
 import { LOGOUTLOCALURL } from '../../const/ConstUrls'
+import { NavLink } from 'react-router-dom'
 import './UserDropDown.scss'
 let _ = require('lodash')
 
@@ -42,7 +43,11 @@ class UserDropDown extends React.Component {
             <section className="UserDropDown">
                 <div className="UserDropDown-Cont">
                     <p>My Orders</p>
-                    <p>Settings</p>
+                    <NavLink to={{
+                        pathname: `${process.env.PUBLIC_URL}/myaccount`
+                    }}>
+                        <p>Settings</p>
+                    </NavLink>
                     <p onClick={this.signOut}>Sign Out</p>
                 </div>
             </section>

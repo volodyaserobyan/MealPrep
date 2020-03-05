@@ -3,11 +3,11 @@ import fbIcon from '../../assets/images/bx_bxl-facebook-square.svg'
 import googleIcon from '../../assets/images/VectorGoogle.svg'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { signInCall, UserInfo } from '../../action/Action'
+import { signInCall, userInfo } from '../../action/Action'
 import { Redirect } from 'react-router-dom';
 import {
     LOGINLOCALURL,
-    GETMEALSURL
+    USERSMEURL
 } from '../../const/ConstUrls'
 import './Login.scss'
 
@@ -54,7 +54,7 @@ class Login extends React.Component {
                     this.setState({
                         isSuccess: true
                     })
-                    this.props.userInfo(GETMEALSURL)
+                    this.props.infoUser(USERSMEURL)
                 }
                 else {
                     this.setState({
@@ -116,7 +116,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         signInLocal: (url, data) => dispatch(signInCall(url, data)),
-        userInfo: url => dispatch(UserInfo(url))
+        infoUser: url => dispatch(userInfo(url))
     }
 }
 

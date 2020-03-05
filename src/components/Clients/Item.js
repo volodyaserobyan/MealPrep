@@ -31,7 +31,7 @@ class Item extends React.Component {
                         <div className="Clients-Item-Cont_user_wrapper">
                             <img src={User1} />
                             <div className="Clients-Item-Cont_user_wrapper_info">
-                                <h1 className="Clients-Item-Cont_user_wrapper_info_name">{this.props.item.user.name}</h1>
+                                <h1 className="Clients-Item-Cont_user_wrapper_info_name">{this.props.item.user !== null ? this.props.item.user.name: 'User Deleted'}</h1>
                                 <p className="Clients-Item-Cont_user_wrapper_info_work">Blogger</p>
                             </div>
                         </div>
