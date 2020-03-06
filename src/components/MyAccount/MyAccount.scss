@@ -104,7 +104,11 @@
 
         &-Edit {
           display: flex;
-          > p {
+          > a {
+            text-decoration: none;
+            margin-left: 16px;
+          }
+          p {
             font-size: 13px;
             line-height: 20px;
             text-decoration-line: underline;

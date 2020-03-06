@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { changePassword } from '../../action/Action'
 import { CHANGEPASSWORDURL } from '../../const/ConstUrls'
+import { isAuth } from '../helpers/Utilities'
 import './ChangePassword.scss'
 
 let _ = require('lodash')
@@ -15,6 +16,7 @@ class ChangePassword extends React.Component {
             newPass: '',
             confPass: '',
             message: '',
+            currentPass: '',
             errors: []
         }
     }
@@ -32,11 +34,21 @@ class ChangePassword extends React.Component {
         e.preventDefault()
 
         if (this.state.newPass === this.state.confPass) {
-            const sendObj = {
-                "password_change_token": this.props.match.params.token,
-                newPassword: this.state.newPass
+            let sendObj = {}
+            if (!isAuth()) {
+                sendObj = {
+                    'password_change_token': this.props.match.params.token,
+                    'newPassword': this.state.newPass
+                }
+                this.props.passwordChange(CHANGEPASSWORDURL, sendObj)
             }
-            this.props.passwordChange(CHANGEPASSWORDURL, sendObj)
+            else {
+                sendObj = {
+                    newPassword: this.state.newPass,
+                    lastPassword: this.state.currentPass
+                }
+                this.props.passwordChange(CHANGEPASSWORDURL, sendObj, isAuth())
+            }
         }
         else {
             alert('Check Conf Pass')
@@ -61,6 +73,11 @@ class ChangePassword extends React.Component {
                     </div>
                     <div className='ChangePassword-Cont-Context'>
                         <form onSubmit={this.handleSubmit} className='ChangePassword-Cont-Context-Form'>
+                            {isAuth() &&
+                                <div>
+                                    <p>Current Password</p>
+                                    <input type='password' className='ChangePassword-Cont-Form-Simp' name='currentPass' value={this.state.currentPass} onChange={this.handleChange} />
+                                </div>}
                             <div>
                                 <p>New Password</p>
                                 <input type='password' className='ChangePassword-Cont-Form-Simp' name='newPass' value={this.state.newPass} onChange={this.handleChange} />
@@ -87,7 +104,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        passwordChange: (url, info) => dispatch(changePassword(url, info))
+        passwordChange: (url, info, isAuth) => dispatch(changePassword(url, info, isAuth))
     }
 }
 

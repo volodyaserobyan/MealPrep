@@ -12,11 +12,17 @@
     align-items: center;
     justify-content: center;
 
+    >a {
+      text-decoration: none;
+      margin-top: 24px;
+    }
+
     p {
       font-size: 13px;
       line-height: 16px;
       color: rgba(22, 22, 22, 0.74);
       margin-top: 24px;
+      cursor: pointer;
 
       &:first-child {
           margin-top: 0px;

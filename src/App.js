@@ -65,6 +65,7 @@ const App = props => {
 
     if (!_.isEmpty(props.userReducer)) {
       localStorage.setItem('userName', props.userReducer.user.local.name)
+      localStorage.setItem('userId', props.userReducer.user._id)
       if (props.userReducer.user.local.pending == true) {
         localStorage.setItem('isPending', props.userReducer.user.local.pending)
       }
@@ -110,6 +111,7 @@ const App = props => {
             <Route path={`${process.env.PUBLIC_URL}/myaccount`} component={MyAccount} />
             <Route path={`${process.env.PUBLIC_URL}/forgetpassword`} component={ForgetPassword} />
             <Route path={`${process.env.PUBLIC_URL}/password/forget/:token`} component={ChangePassword} />
+            <Route path={`${process.env.PUBLIC_URL}/changepassword`} component={ChangePassword} />
             <Route path={`${process.env.PUBLIC_URL}/addreview`} component={AddReview} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
             <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />

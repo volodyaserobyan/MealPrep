@@ -18,11 +18,9 @@ class Item extends React.Component {
     }
 
     render() {
-        console.log(this.props, 'dsdsdsdsdsds')
         for(let i = 1; i <= this.props.item.rating; i++) {
             this.ratings.push(i)
         }
-        console.log(this.ratings, 'rating')
         return (
             <section className="Clients-Item">
                 <div className="Clients-Item-Cont">

@@ -266,27 +266,48 @@ export const forgetPassword = (url, email) => {
     }
 }
 
-export const changePassword = (url, obj) => {
+export const changePassword = (url, obj, isAuth) => {
     return dispatch => {
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(obj)
-        }).then(response => response.json())
-            .then(changePassword => {
-                dispatch({
-                    type: All.CHANGEPASSWORD,
-                    changePassword: changePassword
+        isAuth ?
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem('token')
+                },
+                body: JSON.stringify(obj)
+            }).then(response => response.json())
+                .then(changePassword => {
+                    dispatch({
+                        type: All.CHANGEPASSWORD,
+                        changePassword: changePassword
+                    })
                 })
-            })
-            .catch(error => {
-                dispatch({
-                    type: All.ERROR,
-                    data: error
+                .catch(error => {
+                    dispatch({
+                        type: All.ERROR,
+                        data: error
+                    })
+                }) :
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(obj)
+            }).then(response => response.json())
+                .then(changePassword => {
+                    dispatch({
+                        type: All.CHANGEPASSWORD,
+                        changePassword: changePassword
+                    })
                 })
-            })
+                .catch(error => {
+                    dispatch({
+                        type: All.ERROR,
+                        data: error
+                    })
+                })
     }
 }
 
@@ -322,10 +343,10 @@ export const deleteUser = url => {
                 "Authorization": localStorage.getItem('token')
             },
         }).then(response => response.json())
-            .then(deleteUSer => {
+            .then(deleteUser => {
                 dispatch({
                     type: All.DELETEUSER,
-                    deleteUSer: deleteUSer
+                    deleteUser: deleteUser
                 })
             })
             .catch(error => {

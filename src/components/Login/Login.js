@@ -49,17 +49,16 @@ class Login extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (!_.isEqual(this.props, nextProps)) {
             if (!_.isEmpty(nextProps.signinReducer)) {
-                if (nextProps.signinReducer.message != 'Errors') {
+                if (nextProps.signinReducer.error_code === 'INVALID_CREDENTIALS') {
+                    this.setState({
+                        errors: nextProps.signinReducer.message
+                    })
+                } else {
                     localStorage.setItem('token', nextProps.signinReducer.token)
                     this.setState({
                         isSuccess: true
                     })
                     this.props.infoUser(USERSMEURL)
-                }
-                else {
-                    this.setState({
-                        errors: nextProps.signinReducer.errors.errors
-                    })
                 }
             }
         }
@@ -78,7 +77,7 @@ class Login extends React.Component {
                 <div className="Login-Cont">
                     <h1>Sign In</h1>
                     <form onSubmit={this.handleSubmit}>
-                        {this.state.errors.map(item => <p key={item.value}>{item.msg}</p>)}
+                        <p>{this.state.errors}</p>
                         <input name="mail" placeholder="E-mail *" className="Login-Cont-Mail" value={this.state.mail} onChange={this.handleChange} />
                         <input name="password" placeholder="Password *" type='password' className="Login-Cont-Password" value={this.state.password} onChange={this.handleChange} />
                         <input type="submit" className="Login-Cont-Submit" value="LOGIN" />

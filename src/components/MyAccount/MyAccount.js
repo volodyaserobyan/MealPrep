@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { userInfo, deleteUser } from '../../action/Action'
 import { USERSMEURL, DELETEUSERURL } from '../../const/ConstUrls'
 import { Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './MyAccount.scss'
 
 let _ = require('lodash')
@@ -26,7 +27,7 @@ class MyAccount extends React.Component {
     }
 
     deleteUserClick = () => {
-        this.props.userDelete(`${DELETEUSERURL}${this.props.userReducerGET.user._id}`)
+        this.props.userDelete(`${DELETEUSERURL}${localStorage.getItem('userId')}`)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -78,7 +79,11 @@ class MyAccount extends React.Component {
                             </div>
                             <div className='MyAccount-Cont-Context-Info-Edit'>
                                 <p>Edit information</p>
-                                <p>Change password</p>
+                                <NavLink to={{
+                                    pathname: `${process.env.PUBLIC_URL}/changepassword`
+                                }}>
+                                    <p>Change password</p>
+                                </NavLink>
                             </div>
                         </div>
                     </div>
