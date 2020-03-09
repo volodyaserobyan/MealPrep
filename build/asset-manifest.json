@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/react/meal-prep/build/static/css/main.c81b4a3f.chunk.css",
-    "main.js": "/react/meal-prep/build/static/js/main.b4d43f14.chunk.js",
-    "main.js.map": "/react/meal-prep/build/static/js/main.b4d43f14.chunk.js.map",
-    "runtime-main.js": "/react/meal-prep/build/static/js/runtime-main.1b66b7e8.js",
-    "runtime-main.js.map": "/react/meal-prep/build/static/js/runtime-main.1b66b7e8.js.map",
-    "static/css/2.b1585b13.chunk.css": "/react/meal-prep/build/static/css/2.b1585b13.chunk.css",
-    "static/js/2.1fac2da6.chunk.js": "/react/meal-prep/build/static/js/2.1fac2da6.chunk.js",
-    "static/js/2.1fac2da6.chunk.js.map": "/react/meal-prep/build/static/js/2.1fac2da6.chunk.js.map",
+    "main.js": "/react/meal-prep/build/static/js/main.6201db29.chunk.js",
+    "main.js.map": "/react/meal-prep/build/static/js/main.6201db29.chunk.js.map",
+    "runtime-main.js": "/react/meal-prep/build/static/js/runtime-main.25eda9b3.js",
+    "runtime-main.js.map": "/react/meal-prep/build/static/js/runtime-main.25eda9b3.js.map",
+    "static/css/2.d484a963.chunk.css": "/react/meal-prep/build/static/css/2.d484a963.chunk.css",
+    "static/js/2.5f4a593b.chunk.js": "/react/meal-prep/build/static/js/2.5f4a593b.chunk.js",
+    "static/js/2.5f4a593b.chunk.js.map": "/react/meal-prep/build/static/js/2.5f4a593b.chunk.js.map",
     "static/css/3.16aca965.chunk.css": "/react/meal-prep/build/static/css/3.16aca965.chunk.css",
-    "static/js/3.c77be943.chunk.js": "/react/meal-prep/build/static/js/3.c77be943.chunk.js",
-    "static/js/3.c77be943.chunk.js.map": "/react/meal-prep/build/static/js/3.c77be943.chunk.js.map",
+    "static/js/3.651a114e.chunk.js": "/react/meal-prep/build/static/js/3.651a114e.chunk.js",
+    "static/js/3.651a114e.chunk.js.map": "/react/meal-prep/build/static/js/3.651a114e.chunk.js.map",
     "static/js/4.efb5883a.chunk.js": "/react/meal-prep/build/static/js/4.efb5883a.chunk.js",
     "static/js/4.efb5883a.chunk.js.map": "/react/meal-prep/build/static/js/4.efb5883a.chunk.js.map",
     "index.html": "/react/meal-prep/build/index.html",
-    "precache-manifest.1de2f3cca6019da7db0317ed2c79d9b8.js": "/react/meal-prep/build/precache-manifest.1de2f3cca6019da7db0317ed2c79d9b8.js",
+    "precache-manifest.9147c7cd6f568e29e2e6b12fdb453bcb.js": "/react/meal-prep/build/precache-manifest.9147c7cd6f568e29e2e6b12fdb453bcb.js",
     "service-worker.js": "/react/meal-prep/build/service-worker.js",
-    "static/css/2.b1585b13.chunk.css.map": "/react/meal-prep/build/static/css/2.b1585b13.chunk.css.map",
+    "static/css/2.d484a963.chunk.css.map": "/react/meal-prep/build/static/css/2.d484a963.chunk.css.map",
     "static/css/3.16aca965.chunk.css.map": "/react/meal-prep/build/static/css/3.16aca965.chunk.css.map",
     "static/css/main.c81b4a3f.chunk.css.map": "/react/meal-prep/build/static/css/main.c81b4a3f.chunk.css.map",
     "static/media/Meals.scss": "/react/meal-prep/build/static/media/Arrow-right.e8b1450f.svg",
@@ -87,9 +87,9 @@
     "static/media/mdi_minus.svg": "/react/meal-prep/build/static/media/mdi_minus.bd4e8d8d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1b66b7e8.js",
+    "static/js/runtime-main.25eda9b3.js",
     "static/js/4.efb5883a.chunk.js",
     "static/css/main.c81b4a3f.chunk.css",
-    "static/js/main.b4d43f14.chunk.js"
+    "static/js/main.6201db29.chunk.js"
   ]
 }

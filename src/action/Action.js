@@ -382,3 +382,26 @@ export const postTestimonials = (url, info) => {
             })
     }
 }
+
+export const getCategoriesHelpCenter = url => {
+    return dispatch => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(getCategories => {
+                dispatch({
+                    type: All.GETCATEGORIESHELP,
+                    getCategories: getCategories
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}

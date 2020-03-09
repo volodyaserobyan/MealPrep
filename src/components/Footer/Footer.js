@@ -4,7 +4,9 @@ import Fb from '../../assets/images/Vector (1).svg'
 import Twitter from '../../assets/images/Vector (2).svg'
 import Inst from '../../assets/images/Vector (3).svg'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './Footer.scss'
+import { getCategoriesHelpCenter } from '../../action/Action'
 
 class Footer extends React.Component {
 
@@ -31,7 +33,7 @@ class Footer extends React.Component {
                             pathname: `${process.env.PUBLIC_URL}/contacts`
                         }}>Contacts</Link>
                         <Link to={{
-                            pathname: `${process.env.PUBLIC_URL}/help`
+                            pathname: `${process.env.PUBLIC_URL}/help/${this.props.helpCenterReducerGET.categories[0]._id}`
                         }}>Help</Link>
                     </div>
                     <div className="Footer-Cont-Terms">
@@ -63,4 +65,16 @@ class Footer extends React.Component {
     }
 }
 
-export default Footer
+const mapStateToProps = state => {
+    return {
+        helpCenterReducerGET: state.helpCenterReducer.getCategories
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCategoriesHelp: url => dispatch(getCategoriesHelpCenter(url))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)

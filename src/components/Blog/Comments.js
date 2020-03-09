@@ -8,7 +8,7 @@ class Comments extends React.Component {
             <div className="BlogComplete-Cont-Comments">
                 <div className="BlogComplete-Cont-Comments-Title">
                     <div className="BlogComplete-Cont-Comments-Title_icon">
-                        <img src={messageItem} />
+                        <img src={messageItem} alt='' />
                     </div>
                     <h1>Comments 4</h1>
                 </div>

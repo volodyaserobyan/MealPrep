@@ -29,12 +29,14 @@ import MyAccount from './components/MyAccount/MyAccount'
 import {
   getMealsFromDB,
   userInfo,
-  getTestimonials
+  getTestimonials,
+  getCategoriesHelpCenter
 } from './action/Action';
 import {
   USERSMEURL,
   GETMEALSURL,
-  TESTIMONIALSURL
+  TESTIMONIALSURL,
+  HELPCENTERCATGURL
 } from './const/ConstUrls'
 let _ = require('lodash')
 
@@ -46,6 +48,9 @@ const App = props => {
     if (isAuth() && _.isEmpty(props.userReducer)) {
       props.infoUser(USERSMEURL)
     }
+    if (_.isEmpty(props.helpCenterReducerGET) || props.helpCenterReducerGET == undefined) {
+      props.getCategoriesHelp(HELPCENTERCATGURL)
+    }
     if (props.mealsItemReducerMessage !== 'meals successfully retrived from db') {
       props.getMealsFromDB(`${GETMEALSURL}?limit=9&offset=0`)
     }
@@ -56,7 +61,8 @@ const App = props => {
 
   useEffect(() => {
     if (props.mealsItemReducerMessage === 'meals successfully retrived from db' &&
-      props.testimonialsReducerMessage === 'testimonials successfully retrived from db') {
+      props.testimonialsReducerMessage === 'testimonials successfully retrived from db' &&
+      !_.isEmpty(props.helpCenterReducerGET)) {
       setIsSuccess(true)
     }
     if (props.signinReducerLogOut != undefined) {
@@ -103,6 +109,7 @@ const App = props => {
             </div>
           }
           <Switch>
+          {/* /${props.helpCenterReducerGET.categories[0]._id} */}
             <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
             <Route path={`${process.env.PUBLIC_URL}/meals`} component={SearchMealsDashboard} />
             <Route path={`${process.env.PUBLIC_URL}/verify/:token`} component={Verify} />
@@ -114,7 +121,7 @@ const App = props => {
             <Route path={`${process.env.PUBLIC_URL}/changepassword`} component={ChangePassword} />
             <Route path={`${process.env.PUBLIC_URL}/addreview`} component={AddReview} />
             <Route path={`${process.env.PUBLIC_URL}/plans`} component={PlansComplete} />
-            <Route path={`${process.env.PUBLIC_URL}/help`} component={Help} />
+            <Route path={`${process.env.PUBLIC_URL}/help/:id`} component={Help} />
             <Route path={`${process.env.PUBLIC_URL}/login`} component={Login} />
             <Route path={`${process.env.PUBLIC_URL}/signup`} component={SignUp} />
             <Route path={`${process.env.PUBLIC_URL}/confirm`} component={Confirm} />
@@ -138,6 +145,7 @@ const mapStateToProps = state => {
     dropDownReducer: state.dropDownReducer.isDropDown,
     signinReducerLogOut: state.signinReducer.logOutUser,
     userReducer: state.userReducer.userInfo,
+    helpCenterReducerGET: state.helpCenterReducer.getCategories
   }
 }
 
@@ -145,7 +153,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getMealsFromDB: url => dispatch(getMealsFromDB(url)),
     infoUser: url => dispatch(userInfo(url)),
-    getTestimonial: url => dispatch(getTestimonials(url))
+    getTestimonial: url => dispatch(getTestimonials(url)),
+    getCategoriesHelp: url => dispatch(getCategoriesHelpCenter(url))
   }
 }
 

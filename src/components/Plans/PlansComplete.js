@@ -13,7 +13,7 @@ class PlansComplete extends React.Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci molestie gravida nam dapibus. Pharetra aenean id feugiat nulla odio platea.</p>
                     </div>
                     <div className="PlansComplete-Cont-Collector">
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map(id => <Item id={id} />)}
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map(id => <Item key={id} id={id} />)}
                     </div>
 
                 </div>

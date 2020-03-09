@@ -11,6 +11,7 @@ import { dropDownReducer } from './dropDownReducer'
 import { userReducer } from './userReducer'
 import { testimonialsReducer } from './testimonialsReducer'
 import { passwordReducer } from './passwordReducer'
+import { helpCenterReducer } from './helpCenterReducer'
 
 const appReducer = combineReducers({
     blogItemReducer,
@@ -23,7 +24,8 @@ const appReducer = combineReducers({
     dropDownReducer,
     userReducer,
     testimonialsReducer,
-    passwordReducer
+    passwordReducer,
+    helpCenterReducer
 })
 
 const rootReducer = (state, action) => {

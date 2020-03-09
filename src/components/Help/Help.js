@@ -1,6 +1,12 @@
 import React from 'react'
 import HelpGeneral from './HelpGeneral'
+import { connect } from 'react-redux'
+import { getCategoriesHelpCenter } from '../../action/Action'
+import { HELPCENTERCATGURL } from '../../const/ConstUrls'
+import { NavLink } from 'react-router-dom'
 import './Help.scss'
+
+let _ = require('lodash')
 
 class Help extends React.Component {
 
@@ -8,51 +14,85 @@ class Help extends React.Component {
         super(props)
 
         this.state = {
-            general: true,
-            account: false,
-            techSupp: false
+            // general: true,
+            // account: false,
+            // techSupp: false,
+            isSuccess: false
         }
     }
 
-    handleClick = e => {
-        switch(e.target.innerText) {
-            case 'General':
+    // handleClick = e => {
+    //     switch (e.target.innerText) {
+    //         case 'help center 288821':
+    //             this.setState({
+    //                 general: true,
+    //                 account: false,
+    //                 techSupp: false
+    //             })
+    //             break;
+    //         case 'General':
+    //             this.setState({
+    //                 general: false,
+    //                 account: true,
+    //                 techSupp: false
+    //             })
+    //             break;
+    //         case 'Restaurants':
+    //             this.setState({
+    //                 general: false,
+    //                 account: false,
+    //                 techSupp: true
+    //             })
+    //             break
+    //     }
+    // }
+
+    componentDidMount() {
+        if (_.isEmpty(this.props.helpCenterReducerGET)) {
+            this.props.getCategoriesHelp(HELPCENTERCATGURL)
+        } else {
+            this.setState({
+                isSuccess: true
+            })
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (!_.isEqual(this.props, nextProps)) {
+            if (!_.isEmpty(nextProps.helpCenterReducerGET)) {
                 this.setState({
-                    general: true,
-                    account: false,
-                    techSupp: false
+                    isSuccess: true
                 })
-                break;
-            case 'Managing my Account':
-                    this.setState({
-                        general: false,
-                        account: true,
-                        techSupp: false
-                    })
-                    break;
-            case 'Technical Support':
-                this.setState({
-                    general: false,
-                    account: false,
-                    techSupp: true
-                })
-                break
-        } 
+            }
+        }
     }
 
     render() {
+        if (!this.state.isSuccess) {
+            return (
+                <div>
+                    Loading...
+                </div>
+            )
+        }
+
         return (
             <div className="Help">
                 <div className="Help-Cont innerWrap">
-                        <h1 className="Help-Cont-Title">Help Center</h1>
+                    <h1 className="Help-Cont-Title">Help Center</h1>
                     <div className="Help-Cont-Wrap">
                         <div className="Help-Cont-Wrap-Menu">
-                            <p onClick={this.handleClick} className={`${this.state.general && 'isActive'}`}>General</p>
-                            <p onClick={this.handleClick} className={`${this.state.account && 'isActive'}`}>Managing my Account</p>
-                            <p onClick={this.handleClick} className={`${this.state.techSupp && 'isActive'}`}>Technical Support</p>
+                            {this.props.helpCenterReducerGET.categories.map(item =>
+                                <NavLink to={{
+                                    pathname: `${process.env.PUBLIC_URL}/help/${item._id}`,
+                                }}
+                                    activeClassName='isActive'>
+                                    <p key={item._id}>{item.title}</p>
+                                </NavLink>)}
                         </div>
                         <div className="Help-Cont-Wrap-Context">
-                            {this.state.general ? <HelpGeneral /> : this.state.account ? <>Account</> : <>Tech Support</>}
+                            {this.props.helpCenterReducerGET.categories.map(item =>
+                                this.props.match.params.id == item._id && <HelpGeneral item={item} />)}
                         </div>
                     </div>
                 </div>
@@ -61,4 +101,16 @@ class Help extends React.Component {
     }
 }
 
-export default Help
+const mapStateToProps = state => {
+    return {
+        helpCenterReducerGET: state.helpCenterReducer.getCategories
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getCategoriesHelp: url => dispatch(getCategoriesHelpCenter(url))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Help)
