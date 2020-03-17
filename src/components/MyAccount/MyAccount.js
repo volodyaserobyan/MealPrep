@@ -16,7 +16,10 @@ class MyAccount extends React.Component {
         super(props)
 
         this.state = {
-            isDeleted: false
+            isDeleted: false,
+            file: '',
+            imagePreviewUrl: '',
+            pictures: {}
         }
     }
 
@@ -41,7 +44,24 @@ class MyAccount extends React.Component {
         }
     }
 
+    handleImageChange = (e) => {
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imagePreviewUrl: reader.result,
+                pictures: { src: reader.result, name: file.name }
+            });
+        }
+
+        reader.readAsDataURL(file)
+    }
+
     render() {
+        console.log(this.state)
         if (this.state.isDeleted) {
             return (
                 <Redirect to={{
@@ -61,8 +81,13 @@ class MyAccount extends React.Component {
                     </div>
                     <div className='MyAccount-Cont-Context'>
                         <div className='MyAccount-Cont-Context-User'>
-                            <img src={user} alt='' />
-                            <p>Upload photo</p>
+                            {_.isEmpty(this.state.pictures) ?
+                                <img src={user} alt='' /> :
+                                <img src={this.state.pictures.src} alt='' />}
+                            <span>
+                                <p>Upload photo</p>
+                                <input type="file" onChange={this.handleImageChange} />
+                            </span>
                         </div>
                         <div className='MyAccount-Cont-Context-Info'>
                             <div>

@@ -60,21 +60,34 @@
         justify-content: center;
         align-items: center;
 
-        > img {
-          margin-bottom: 20px;
+        > span {
+          position: relative;
+          > p {
+            background: rgba(245, 132, 54, 0.08);
+            border-radius: 4px;
+            padding: 6px 8px;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 16px;
+            text-align: center;
+            color: #f58436;
+            align-self: center;
+            margin: 0px 0px;
+          }
+
+          > input {
+            position: absolute;
+            top: -0px;
+            right: -86px;
+            height: 100%;
+            width: 100;
+            opacity: 0;
+            cursor: pointer;
+          }
         }
 
-        > p {
-          background: rgba(245, 132, 54, 0.08);
-          border-radius: 4px;
-          padding: 6px 8px;
-          font-weight: 500;
-          font-size: 12px;
-          line-height: 16px;
-          text-align: center;
-          color: #f58436;
-          align-self: center;
-          margin: 0px 0px;
+        > img {
+          margin-bottom: 20px;
         }
       }
 

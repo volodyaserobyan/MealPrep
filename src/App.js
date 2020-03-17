@@ -61,7 +61,7 @@ const App = props => {
 
   useEffect(() => {
     if (props.mealsItemReducerMessage === 'meals successfully retrived from db' &&
-      props.testimonialsReducerMessage === 'testimonials successfully retrived from db' &&
+      props.testimonialsReducerMessage === 'testimonials retrived from db' &&
       !_.isEmpty(props.helpCenterReducerGET)) {
       setIsSuccess(true)
     }
@@ -69,15 +69,23 @@ const App = props => {
       localStorage.clear()
     }
 
-    if (!_.isEmpty(props.userReducer)) {
-      localStorage.setItem('userName', props.userReducer.user.local.name)
-      localStorage.setItem('userId', props.userReducer.user._id)
-      if (props.userReducer.user.local.pending == true) {
-        localStorage.setItem('isPending', props.userReducer.user.local.pending)
+    if (!_.isEmpty(props.userReducer) && props.userReducer.error_code !== "NOT_AUTHORIZED") {
+      if (props.userReducer.user.method == 'facebook') {
+        localStorage.setItem('userName', props.userReducer.user.facebook.name)
+        localStorage.setItem('userId', props.userReducer.user.facebook.id)
       }
       else {
-        localStorage.setItem('isPending', false)
+        localStorage.setItem('userName', props.userReducer.user.local.name)
+        localStorage.setItem('userId', props.userReducer.user._id)
+        if (props.userReducer.user.local.pending == true) {
+          localStorage.setItem('isPending', props.userReducer.user.local.pending)
+        }
+        else {
+          localStorage.setItem('isPending', false)
+        }
       }
+    } else {
+      localStorage.clear()
     }
 
   }, [props.mealsItemReducerMessage,
@@ -109,7 +117,7 @@ const App = props => {
             </div>
           }
           <Switch>
-          {/* /${props.helpCenterReducerGET.categories[0]._id} */}
+            {/* /${props.helpCenterReducerGET.categories[0]._id} */}
             <Route path={`${process.env.PUBLIC_URL}/`} component={Dashboard} exact />
             <Route path={`${process.env.PUBLIC_URL}/meals`} component={SearchMealsDashboard} />
             <Route path={`${process.env.PUBLIC_URL}/verify/:token`} component={Verify} />

@@ -145,6 +145,30 @@ export const signInCall = (url, data) => {
     }
 }
 
+export const signInFb = (url, token) => {
+    return dispatch => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(token)
+        }).then(response => response.json())
+            .then(signinUserFB => {
+                dispatch({
+                    type: All.SIGNINUSERFB,
+                    signinUserFB: signinUserFB
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
 export const verifyCall = (url, token) => {
 
     return dispatch => {
@@ -170,7 +194,7 @@ export const verifyCall = (url, token) => {
     }
 }
 
-export const userInfo = url => {
+export const userInfo = (url, body) => {
     return dispatch => {
         fetch(url, {
             method: 'GET',
@@ -395,6 +419,29 @@ export const getCategoriesHelpCenter = url => {
                 dispatch({
                     type: All.GETCATEGORIESHELP,
                     getCategories: getCategories
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: All.ERROR,
+                    data: error
+                })
+            })
+    }
+}
+
+export const getMembersAboutUs = url => {
+    return dispatch => {
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => response.json())
+            .then(getMembers => {
+                dispatch({
+                    type: All.GETMEMBERSABOUTUS,
+                    getMembers: getMembers
                 })
             })
             .catch(error => {

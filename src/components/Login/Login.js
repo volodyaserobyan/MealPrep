@@ -3,12 +3,18 @@ import fbIcon from '../../assets/images/bx_bxl-facebook-square.svg'
 import googleIcon from '../../assets/images/VectorGoogle.svg'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { signInCall, userInfo } from '../../action/Action'
+import {
+    signInCall,
+    userInfo,
+    signInFb
+} from '../../action/Action'
 import { Redirect } from 'react-router-dom';
 import {
     LOGINLOCALURL,
-    USERSMEURL
+    USERSMEURL,
+    LOGINFBURL
 } from '../../const/ConstUrls'
+import FacebookLogin from 'react-facebook-login';
 import './Login.scss'
 
 let _ = require('lodash')
@@ -58,10 +64,23 @@ class Login extends React.Component {
                     this.setState({
                         isSuccess: true
                     })
-                    this.props.infoUser(USERSMEURL)
                 }
             }
+            if (!_.isEmpty(nextProps.signinReducerFB)) {
+                localStorage.setItem('token', nextProps.signinReducerFB.token)
+                this.setState({
+                    isSuccess: true
+                })
+                this.props.infoUser(USERSMEURL)
+            }
         }
+    }
+
+    responseFacebook = response => {
+        const sendObj = {
+            access_token: response.accessToken
+        }
+        this.props.signInFB(LOGINFBURL, sendObj)
     }
 
     render() {
@@ -90,7 +109,12 @@ class Login extends React.Component {
                     <div className="Login-Cont-Line">
                         <span>or</span>
                     </div>
-                    <button className="Login-Cont-Fb"><img src={fbIcon} /> Sign In with Facebook</button>
+                    <FacebookLogin
+                        appId="178419416718602"
+                        fields="name,email,picture"
+                        callback={this.responseFacebook}
+                        cssClass='Login-Cont-Fb'
+                        icon={<img src={fbIcon} />} />
                     <button className="Login-Cont-Google"><img src={googleIcon} /> Sign In with Google</button>
                     <div className="Login-Cont-Member">
                         <p>Not a member? </p>
@@ -108,14 +132,16 @@ class Login extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        signinReducer: state.signinReducer.signinUser
+        signinReducer: state.signinReducer.signinUser,
+        signinReducerFB: state.signinReducer.signinUserFB
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         signInLocal: (url, data) => dispatch(signInCall(url, data)),
-        infoUser: url => dispatch(userInfo(url))
+        signInFB: (url, token) => dispatch(signInFb(url, token)),
+        infoUser: url => dispatch(userInfo(url)),
     }
 }
 

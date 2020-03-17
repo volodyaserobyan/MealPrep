@@ -115,26 +115,29 @@
       }
     }
 
-    &-Fb {
-      background: #3b5998;
-      border-radius: 2px;
+    span {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 0px;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 16px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #ffffff;
-      border: none;
-      margin-top: 36px;
-
-      img {
-        margin-right: 11px;
+      .Login-Cont-Fb {
+        background: #3b5998;
+        border-radius: 2px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0px;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #ffffff;
+        border: none;
+        margin-top: 36px;
+  
+        img {
+          margin-right: 11px;
+        }
       }
     }
 

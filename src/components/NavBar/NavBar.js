@@ -63,6 +63,7 @@ class NavBar extends React.Component {
         }
         console.log(isVerified(), 'VErify')
         console.log(isAuth(), 'isAuth')
+        console.log(this.props.userReducer, 'user')
         return (
             <nav className="NavBar">
                 {JSON.parse(localStorage.getItem('isPending')) == true &&
@@ -121,7 +122,15 @@ class NavBar extends React.Component {
                                 }}><button className="NavBar-Cont-Login_cont_signIn">Sign In</button>
                                 </Link>
                             </div> : <div className="User">
-                                <img src={UserVector} alt='' />
+                                {this.props.userReducer.user.method == 'facebook' ?
+                                    <div className='User-Photo'>
+                                        <img src={this.props.userReducer.user.facebook.photo} alt='' /> 
+                                    </div> :
+                                    this.props.userReducer.user.local.photo != null ?
+                                        <img src={this.props.userReducer.user.local.photo} alt='' />
+                                        :
+                                        <img src={UserVector} alt='' />
+                                }
                                 <div onClick={this.handleDropDown}>
                                     <p>My Account</p>
                                     <img src={arrowDown} alt='' />

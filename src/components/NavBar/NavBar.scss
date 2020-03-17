@@ -103,6 +103,16 @@
         display: flex;
         align-items: center;
 
+        &-Photo {
+          width: 30px;
+          border-radius: 50%;
+
+          >img {
+            width: 100%;
+            max-width: 30px;
+          }
+        }
+
         > div {
           display: flex;
           align-items: center;

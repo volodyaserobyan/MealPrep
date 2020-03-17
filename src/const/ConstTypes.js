@@ -12,6 +12,7 @@ export const GETFILTERS = 'GET_FILTERS'
 
 export const SIGNUPUSER = 'SIGNUP_USER'
 export const SIGNINUSER = 'SIGNIN_USER'
+export const SIGNINUSERFB = 'SIGNIN_USER_FB'
 export const DELETEUSER = 'DELETE_USER'
 
 export const VERIFYUSER = 'VERIFY_USER'
@@ -26,5 +27,7 @@ export const FORGETPASSWORD = 'FORGET_PASSWORD'
 export const CHANGEPASSWORD = 'CHANGE_PASSWORD'
 
 export const GETCATEGORIESHELP = 'GET_HELP_CAT'
+
+export const GETMEMBERSABOUTUS = 'GET_MEMBERS_ABOUTUS'
 
 export const ERROR = 'ERROR'
